@@ -286,6 +286,7 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/macos,linux,flutter,android,windows,intellij
 
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/androidstudio
 # Edit at https://www.gitignore.io/?templates=androidstudio
@@ -421,3 +422,6 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/androidstudio
+
+ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+.idea
