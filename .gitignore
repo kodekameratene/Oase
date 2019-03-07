@@ -286,3 +286,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/macos,linux,flutter,android,windows,intellij
 
+ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+.idea
