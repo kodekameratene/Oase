@@ -18,19 +18,15 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.teal,
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.message)),
-                Tab(icon: Icon(Icons.event)),
-                Tab(icon: Icon(Icons.info)),
+                Tab(icon: Icon(Icons.message), text: "Meldinger"),
+                Tab(icon: Icon(Icons.event), text: "Program"),
+                Tab(icon: Icon(Icons.info), text: "Info"),
               ],
             ),
-            title: Text('Oase 2019'),
+            title: Text('Jonah'),
           ),
           body: TabBarView(
-            children: [
-              NewsPage(),
-              ProgramPage(),
-              InfoPage()
-            ],
+            children: [NewsPage(), ProgramPage(), InfoPage()],
           ),
         ),
       ),

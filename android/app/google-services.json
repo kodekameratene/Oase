@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "952557612523",
+    "firebase_url": "https://jonah-cd0c2.firebaseio.com",
+    "project_id": "jonah-cd0c2",
+    "storage_bucket": "jonah-cd0c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952557612523:android:756d60dc4ac88518",
+        "android_client_info": {
+          "package_name": "no.kodekameratene.jonah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952557612523-r8tocfa90c54tklsvvnlivmcsqdtuoel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXww72rt_dE28smkVSR5qo9T-U-zEe0zU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
