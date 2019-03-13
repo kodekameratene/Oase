@@ -19,6 +19,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fluro:
+    git: git://github.com/theyakka/fluro.git
+  photo_view:
+    git: git://github.com/renancaraujo/photo_view
   firebase_core: ^0.3.1+1 # add dependency for Firebase Core
   cloud_firestore: ^0.9.5+2
 
