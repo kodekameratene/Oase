@@ -1,0 +1,86 @@
+digraph jonah {
+    label = "Jonah App Oversikt" 
+    rankdir=LR 
+    compound=true
+    subgraph cluster_menu{
+        label = TabBarMenu
+        Info
+        Program
+        Nyhet
+        "Settings?"[style=dotted]
+    } 
+    Info->Post[lhead=cluster_InfoPage,label="(tap)"];
+    Program->Event[lhead=cluster_ProgramPage,label="(tap)"]
+    Nyhet->Message[lhead=cluster_NewsPage,label="(tap)"]
+    "Settings?"-> PushNotificationToggle[lhead=cluster_SettingsPage,label="(tap)",style=dotted]
+  
+    subgraph cluster_NewsPage{
+        label=NewsPage
+        Message
+    }
+    Message->title[lhead=cluster_ContentViewer,label="(tap)"]
+
+    subgraph cluster_ProgramPage{
+        label=ProgramPage
+        Event
+    }
+    Event->title[lhead=cluster_ContentViewer,label="(tap)"]
+    
+    subgraph cluster_InfoPage{
+        label=InfoPage
+        Post
+    }
+    Post->title[lhead=cluster_ContentViewer,label="(tap)"]
+
+    subgraph cluster_ContentViewer{
+        label = ContentViewer
+        title
+        content
+        img
+        "showCategories[cat1,cat2]"
+        startTime
+        endTime
+        number
+        url
+        location
+        category[style=dotted]
+        importance[style=dotted]
+    }
+    number -> CallNumber[style=dotted,label="(tap)"]
+    CallNumber[style=dotted]
+    url -> OpenBrowser[style=dotted,label="(tap)"]
+    OpenBrowser[style=dotted]
+    location -> InteractiveMap[lhead=cluster_FullscreenInteractiveMap,label="(tap)"]
+    img -> ZoomableImg[lhead=cluster_FullscreenImgViewScreen,label="(tap)"]
+    "showCategories[cat1,cat2]"-> list_of_category_posts[lhead=cluster_CategoryListPage,label="(tap on one category/group)"]
+    
+    subgraph cluster_FullscreenImgViewScreen{
+        label = "FullscreenImgViewScreen"
+        ZoomableImg
+        Dismiss_FullscreenImgView[style=dotted]
+    }
+    
+    subgraph cluster_FullscreenInteractiveMap{
+        label = "FullscreenInteractiveMap"
+        InteractiveMap
+        Dismiss_Map[style=dotted]
+    }
+
+    subgraph cluster_SettingsPage{
+        label="SettingsPage?"
+        PushNotificationToggle
+        ManagePushSubscriptions
+        "DarkMode (aka. AwesomeMode)"
+        "ChangeFestival?"
+    }
+
+    subgraph cluster_CategoryListPage{
+        label="CategoryListPage"
+        category_title
+        category_content
+        list_of_category_posts
+    }
+    list_of_category_posts->title[lhead=cluster_ContentViewer,label="(tap on one post)"]
+
+}
+
