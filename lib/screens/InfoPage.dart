@@ -1,65 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:jonah/src/ContentPost.dart';
 
 class InfoPage extends StatelessWidget {
+  List<ContentPost> _infoPosts = infoPosts;
+
   Widget build(context) {
     return ListView(
-      children: <Widget>[
-        ListTile(
-//            leading: Text("Tirsdag\n19:00"),
-            title: Text("Title"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/Ansettelsesavtale.png',
-//              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-        ListTile(
-//            leading: Text(DateTime.now().day.toString()),
-            title: Text("Hello"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/Ansettelsesavtale.png',
-              width: 100,
-              height: 100,
-            )),
-        ListTile(
-//            leading: Text(DateTime.now().day.toString()),
-            title: Text("Hello"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-        ListTile(
-//            leading: Text(DateTime.now().day.toString()),
-            title: Text("Hello"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-        ListTile(
-//            leading: Text(DateTime.now().day.toString()),
-            title: Text("Hello"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-        ListTile(
-//            leading: Text(DateTime.now().day.toString()),
-            title: Text("Hello"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-      ],
-    );
+        children: _infoPosts
+            .map((post) => ListTile(
+                  title: Text(post.title),
+                  subtitle: Text(post.content),
+//                  trailing: Image.network(
+//                    post.img,
+//                    height: 100,
+//                    width: 100,
+//                  )
+                ))
+            .toList());
   }
 }

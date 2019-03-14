@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:jonah/src/ContentPost.dart';
 
 class NewsPage extends StatelessWidget {
-//  Widget build(context) {
-//    return PhotoView(
-//      imageProvider:
-//          NetworkImage('http://kodekameraten.no/img/Ansettelsesavtale.png'),
-//    );
-//  }
+  List<ContentPost> _newsPosts = newsPosts;
+
   Widget build(context) {
     return ListView(
-      children: <Widget>[
-        ListTile(
-            title: Text("Title"),
-            subtitle: Text("Subtitle"),
-            trailing: Image.network(
-//              'http://kodekameraten.no/img/Ansettelsesavtale.png',
-              'http://kodekameraten.no/img/hello.jpg',
-              height: 100,
-              width: 100,
-            )),
-      ],
-    );
+        children: _newsPosts
+            .map((post) => ListTile(
+                  title: Text(post.title),
+                  subtitle: Text(post.content),
+//                  trailing: Image.network(
+//                    post.img,
+//                    height: 100,
+//                    width: 100,
+//                  )
+                ))
+            .toList());
   }
 }

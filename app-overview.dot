@@ -45,6 +45,7 @@ digraph jonah {
         location
         category[style=dotted]
         importance[style=dotted]
+        hidden
     }
     number -> CallNumber[style=dotted,label="(tap)"]
     CallNumber[style=dotted]
