@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jonah/src/ContentPost.dart';
 
 class InfoPage extends StatelessWidget {
-  List<ContentPost> _infoPosts = infoPosts;
+  final List<ContentPost> _infoPosts = infoPosts;
 
   Widget build(context) {
     return ListView(
