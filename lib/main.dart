@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jonah/screens/InfoPage.dart';
 import 'package:jonah/screens/NewsPage.dart';
 import 'package:jonah/screens/ProgramPage.dart';
+import 'package:jonah/screens/SettingsPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,18 @@ class MyApp extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.settings),
+                tooltip: 'Settings',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
+              ),
+            ],
             backgroundColor: Colors.teal,
             bottom: TabBar(
               tabs: [
