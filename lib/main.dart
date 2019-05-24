@@ -3,6 +3,7 @@ import 'package:jonah/screens/InfoPage.dart';
 import 'package:jonah/screens/NewsPage.dart';
 import 'package:jonah/screens/ProgramPage.dart';
 import 'package:jonah/screens/SettingsPage.dart';
+import 'package:jonah/styles.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ],
-            backgroundColor: Colors.teal,
+            backgroundColor: Styles.primaryColor,
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.message), text: "Meldinger"),
