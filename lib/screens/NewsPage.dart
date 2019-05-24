@@ -9,20 +9,21 @@ class NewsPage extends StatelessWidget {
     return ListView(
         children: _newsPosts
             .map((post) => ListTile(
-                title: Text(post.title),
-                subtitle: Text(post.content),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ContentViewerPage()),
-                  );
-                },
-                trailing: Image.network(
-                  post.img,
-                  height: 100,
-                  width: 100,
-                )))
+                  title: Text(post.title),
+                  subtitle: Text(post.content),
+                  trailing: Image.network(
+                    post.img,
+                    height: 100,
+                    width: 100,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContentViewerPage()),
+                    );
+                  },
+                ))
             .toList());
   }
 }

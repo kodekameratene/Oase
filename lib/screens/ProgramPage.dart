@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jonah/screens/ContentViewerPage.dart';
 import 'package:jonah/src/ContentPost.dart';
 
 class ProgramPage extends StatelessWidget {
@@ -25,25 +26,13 @@ class ProgramPage extends StatelessWidget {
                     height: 100,
                     width: 100,
                   ),
-                  onTap: () => showDialog(
-                        context: context,
-                        child: Dialog(
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                post.title,
-                                textScaleFactor: 2,
-                              ),
-                              Text(
-                                post.content,
-                                textScaleFactor: 1.8,
-                                textAlign: TextAlign.justify,
-                              )
-                            ],
-                          ),
-                        ),
-                        barrierDismissible: true,
-                      ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContentViewerPage()),
+                    );
+                  },
                 ),
           )
           .toList(),
