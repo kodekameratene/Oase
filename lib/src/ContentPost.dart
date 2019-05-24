@@ -27,6 +27,27 @@ class ContentPost {
       this.hidden});
 }
 
+class Location {
+  final String title;
+  final String subtitle;
+  final String location;
+
+  final DateTime startTime;
+  final DateTime endTime;
+  final String img;
+  final bool active;
+
+  Location({
+    this.title = "Ingen Tittel",
+    this.subtitle,
+    this.location = "TBA",
+    this.startTime,
+    this.endTime,
+    this.img = "",
+    this.active = true,
+  });
+}
+
 final events = [
   new ContentPost(
     title: "Registreringen åpner",
@@ -107,5 +128,22 @@ final infoPosts = [
     title: "Velkommen til Jonah!",
     content: "Lorem ipsum dolor sit amet.",
     img: "http://kodekameraten.no/img/hello.jpg",
+  )
+];
+
+final locations = [
+  new Location(
+    title: "Oase 2019",
+    subtitle: "Stevnet holdes i Kongstenhallen i Fredrikstad.",
+    startTime: DateTime(2019, 6, 9),
+    endTime: DateTime(2019, 14, 9),
+    img:
+        "https://oase.no/wp-content/uploads/2019/01/Oase-2018-HD-0148-300x200.jpg",
+  ),
+  new Location(
+    title: "Oase 2020",
+    startTime: DateTime(2019, 6, 9),
+    endTime: DateTime(2019, 14, 9),
+    active: false,
   )
 ];
