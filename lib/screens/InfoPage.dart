@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jonah/screens/ContentViewerPage.dart';
-import 'package:jonah/src/ContentPost.dart';
+import 'package:jonah/assets/mock_data/ContentPost.dart';
 
 class InfoPage extends StatelessWidget {
   final List<ContentPost> _infoPosts = infoPosts;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jonah/src/ContentPost.dart';
+import 'package:jonah/assets/mock_data/ContentPost.dart';
 import 'package:jonah/styles.dart';
 
 class LocationSelectPage extends StatelessWidget {
