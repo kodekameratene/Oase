@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ],
-            backgroundColor: Styles.primaryColor,
+            backgroundColor: Styles.colorPrimary,
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.message), text: "Meldinger"),
