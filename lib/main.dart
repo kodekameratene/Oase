@@ -17,28 +17,29 @@ class MyApp extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.settings),
-                tooltip: 'Settings',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()),
-                  );
-                },
-              ),
-            ],
-            backgroundColor: Styles.colorPrimary,
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.message), text: "Meldinger"),
-                Tab(icon: Icon(Icons.event), text: "Program"),
-                Tab(icon: Icon(Icons.info), text: "Info"),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  tooltip: 'Settings',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SettingsPage()),
+                    );
+                  },
+                ),
               ],
-            ),
-            title: Text('Jonah'),
-          ),
+              backgroundColor: Styles.colorPrimary,
+              bottom: TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.message), text: "Meldinger"),
+                  Tab(icon: Icon(Icons.event), text: "Program"),
+                  Tab(icon: Icon(Icons.info), text: "Info"),
+                ],
+              ),
+              title: Image(
+                image: AssetImage('lib/assets/oase_neg.png'),
+              )),
           body: TabBarView(
             children: [NewsPage(), ProgramPage(), InfoPage()],
           ),
