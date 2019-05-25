@@ -10,7 +10,7 @@ class LocationSelectPage extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-                title: Text("Velg sted"), backgroundColor: Styles.primaryColor),
+                title: Text("Velg sted"), backgroundColor: Styles.colorPrimary),
             body: ListView(
                 children: _locations
                     .map((post) => ListTile(
@@ -28,7 +28,7 @@ class LocationSelectPage extends StatelessWidget {
                             width: 100,
                           ),
                           onTap: () => AlertDialog(
-                                backgroundColor: Styles.primaryColor,
+                                backgroundColor: Styles.colorPrimary,
                                 title: Text(post.title),
                                 content: Text("Select location"),
                               ),

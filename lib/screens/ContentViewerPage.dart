@@ -6,7 +6,7 @@ class ContentViewerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Styles.primaryColor,
+        backgroundColor: Styles.colorPrimary,
         title: Text("Content Viewer Page"),
       ),
       body: Center(
