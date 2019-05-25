@@ -20,7 +20,7 @@ class InfoPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ContentViewerPage()),
+                          builder: (context) => ContentViewerPage(contentPost: post)),
                     );
                   },
                 ))
