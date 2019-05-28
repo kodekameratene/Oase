@@ -25,7 +25,7 @@ void main() {
     provideMockedNetworkImages(() async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(AppComponent());
-      await tester.tap(find.byKey(Key("Info")));
+      await tester.tap(find.byKey(Key("informasjon")));
       await tester.pump();
     });
   });

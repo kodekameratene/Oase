@@ -26,13 +26,14 @@ class HomePageState extends State<HomePage> {
           },
         ),
       ),
-      backgroundColor: Color.fromRGBO(247, 247, 247, 1),
-      body: Container(
+      //backgroundColor: Styles.colorBackgroundColorMain,
+      backgroundColor: Styles.colorPrimary,
+          body: Container(
         decoration: new BoxDecoration(
           gradient: new LinearGradient(
             colors: [
-              Color.fromRGBO(200, 250, 200, 0.4),
-              Color.fromRGBO(247, 247, 247, 1)
+              Styles.colorWeatherBg,
+              Styles.colorBackgroundColorMain
             ],
             begin: const FractionalOffset(0.5, 0),
             end: const FractionalOffset(0.5, 0.2),
@@ -54,7 +55,7 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 headingCard(context, "Nyheter", "/news"),
                 headingCard(context, "Program", "/program"),
-                headingCard(context, "Info", '/info'),
+                headingCard(context, "informasjon", '/info'),
               ],
             ),
           ),
@@ -72,7 +73,7 @@ class HomePageState extends State<HomePage> {
       child: InkWell(
         splashColor: Styles.colorPrimary,
         child: Container(
-            height: 173,
+            height: 178,
             child: Row(
               children: <Widget>[
                 Padding(
@@ -163,13 +164,14 @@ class WeatherWidget extends StatelessWidget {
       children: <Widget>[
         Icon(
           Icons.wb_sunny,
-          color: Colors.yellow,
+          color: Styles.colorWeatherSunColor,
           size: 54,
         ),
         Text(
           temperature + "°",
+          textAlign: TextAlign.start,
           style: TextStyle(
-              fontSize: 45, fontWeight: FontWeight.w100, color: Colors.black),
+              fontSize: 45, fontWeight: FontWeight.w100, color: Styles.colorWeatherTextColor),
         ),
         Text(
           location,
@@ -177,7 +179,7 @@ class WeatherWidget extends StatelessWidget {
           softWrap: false,
           textAlign: TextAlign.end,
           overflow: TextOverflow.fade,
-          style: TextStyle(fontSize: 17, color: Colors.black),
+          style: TextStyle(fontSize: 17, color: Styles.colorWeatherTextColor),
         )
       ],
       mainAxisAlignment: MainAxisAlignment.spaceAround,
