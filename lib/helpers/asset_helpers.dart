@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jonah/styles.dart';
 
 class AssetHelpers {
   static getAppBarImage() {
-    return Image.asset("lib/assets/oase_neg.png");
+    return Image.asset(Styles.imgLogoMain);
   }
 }
