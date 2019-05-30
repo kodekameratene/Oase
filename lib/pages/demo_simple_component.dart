@@ -1,11 +1,11 @@
-import '../../helpers/color_helpers.dart';
+import 'package:Oase/helpers/color_helpers.dart';
 import 'package:flutter/material.dart';
 
 class DemoSimpleComponent extends StatelessWidget {
   DemoSimpleComponent(
       {String message = "Testing",
-        Color color = const Color(0xFFFFFFFF),
-        String result})
+      Color color = const Color(0xFFFFFFFF),
+      String result})
       : this.message = message,
         this.color = color,
         this.result = result;
@@ -43,9 +43,9 @@ class DemoSimpleComponent extends StatelessWidget {
               constraints: new BoxConstraints(minHeight: 42.0),
               child: new FlatButton(
                 highlightColor:
-                ColorHelpers.blackOrWhiteContrastColor(color).withAlpha(17),
+                    ColorHelpers.blackOrWhiteContrastColor(color).withAlpha(17),
                 splashColor:
-                ColorHelpers.blackOrWhiteContrastColor(color).withAlpha(34),
+                    ColorHelpers.blackOrWhiteContrastColor(color).withAlpha(34),
                 onPressed: () {
                   if (result == null) {
                     Navigator.pop(context);

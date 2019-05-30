@@ -1,8 +1,8 @@
+import 'package:Oase/components/app/app_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
-import 'package:jonah/components/app/app_component.dart';
 
 void main() {
   testWidgets('Navigating To Nyheter', (WidgetTester tester) async {
