@@ -1,14 +1,14 @@
+import 'package:Oase/helpers/content_helper.dart';
+import 'package:Oase/pages/ContentViewerPage.dart';
+import 'package:Oase/pages/HomePage.dart';
+import 'package:Oase/pages/InfoPage.dart';
+import 'package:Oase/pages/NewsPage.dart';
+import 'package:Oase/pages/ProgramPage.dart';
+import 'package:Oase/pages/demo_simple_component.dart';
+import 'package:Oase/pages/settings_component.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:jonah/components/screens/ContentViewerPage.dart';
-import 'package:jonah/components/screens/InfoPage.dart';
-import 'package:jonah/components/screens/NewsPage.dart';
-import 'package:jonah/components/screens/ProgramPage.dart';
-import 'package:jonah/components/screens/demo_simple_component.dart';
-import 'package:jonah/components/screens/HomePage.dart';
-import 'package:jonah/components/screens/settings_component.dart';
-import 'package:jonah/helpers/content_helper.dart';
 
 import '../helpers/color_helpers.dart';
 

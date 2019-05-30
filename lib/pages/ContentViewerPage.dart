@@ -1,9 +1,10 @@
+import 'package:Oase/assets/mock_data/ContentPost.dart';
+import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:jonah/assets/mock_data/ContentPost.dart';
-import 'package:jonah/styles.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.contentPost);
+
   final ContentPost contentPost;
 
   @override

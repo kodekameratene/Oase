@@ -1,8 +1,8 @@
+import 'package:Oase/assets/mock_data/ContentPost.dart';
+import 'package:Oase/helpers/asset_helpers.dart';
+import 'package:Oase/helpers/content_helper.dart';
+import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:jonah/assets/mock_data/ContentPost.dart';
-import 'package:jonah/helpers/asset_helpers.dart';
-import 'package:jonah/helpers/content_helper.dart';
-import 'package:jonah/styles.dart';
 
 import 'ContentViewerPage.dart';
 
