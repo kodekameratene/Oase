@@ -2,9 +2,10 @@ import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-Widget kokaCard(BuildContext context, String title, onTapAction) {
+Widget kokaCard(
+    {String category, String content, String title, onTapAction}) {
   return Card(
-    key: Key(title),
+    key: Key(category),
     color: Color.fromRGBO(253, 253, 253, 1),
     elevation: 8.0,
     margin: EdgeInsets.all(10),
@@ -24,7 +25,7 @@ Widget kokaCard(BuildContext context, String title, onTapAction) {
                           color: Color.fromRGBO(112, 112, 112, 1),
                         ),
                         Text(
-                          title,
+                          category,
                           style: TextStyle(
                             fontSize: 28,
                             fontFamily: "Times",
@@ -43,7 +44,7 @@ Widget kokaCard(BuildContext context, String title, onTapAction) {
                         constraints: BoxConstraints(maxWidth: 200),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
-                          child: Text("At vero eos et just ei iusto",
+                          child: Text(title,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: Styles.textCardHeader),
@@ -51,8 +52,7 @@ Widget kokaCard(BuildContext context, String title, onTapAction) {
                       ),
                       Container(
                         constraints: BoxConstraints(maxWidth: 200),
-                        child: Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        child: Text(content,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             softWrap: true,

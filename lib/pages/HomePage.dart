@@ -51,19 +51,28 @@ class HomePageState extends State<HomePage> {
             child: Column(
               children: <Widget>[
                 kokaCard(
-                    context,
-                    "Nyheter",
-                    () => Application.router.navigateTo(context, "/news",
+                    category: "Nyheter",
+                    title: "Tittel",
+                    content:
+                        "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    onTapAction: () => Application.router.navigateTo(
+                        context, "/news",
                         transition: TransitionType.native)),
                 kokaCard(
-                    context,
-                    "Program",
-                    () => Application.router.navigateTo(context, "/program",
+                    category: "Program",
+                    title: "Tittel",
+                    content:
+                        "Program content something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    onTapAction: () => Application.router.navigateTo(
+                        context, "/program",
                         transition: TransitionType.native)),
                 kokaCard(
-                    context,
-                    "informasjon",
-                    () => Application.router.navigateTo(context, '/info',
+                    category: "informasjon",
+                    title: "Tittel",
+                    content:
+                        "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    onTapAction: () => Application.router.navigateTo(
+                        context, "/info",
                         transition: TransitionType.native)),
               ],
             ),
