@@ -31,4 +31,15 @@ abstract class Styles {
 
   static var weatherWidgetTextLocation =
       TextStyle(fontSize: 17, color: Styles.colorWeatherTextColor);
+
+
+  static var kokaEventCardColorBackground = Color.fromRGBO(253, 253, 253, 1);
+  static var textEventCardHeader =
+  TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
+  static var textEventCardContent = TextStyle(
+      fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
+  static var textEventCardTime = TextStyle(
+      fontFamily: "Times", fontSize: 20, fontWeight: FontWeight.w200);
+
+
 }

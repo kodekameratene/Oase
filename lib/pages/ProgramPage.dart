@@ -1,22 +1,23 @@
 import 'package:Oase/helpers/asset_helpers.dart';
 import 'package:Oase/styles.dart';
+import 'package:Oase/widgets/organisms/kokaCardEvent.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Text(document["title"] ?? '-'),
-          Text(document["subtitle"] ?? '-'),
-          Text(document['content'] ?? '-'),
-          Text(document['location'] ?? '-'),
-          Text((document['startTime'] ?? Timestamp.now()).toDate().toString()),
-          Text((document['endTime'] ?? Timestamp.now()).toDate().toString()),
-          Image.network(document['img'] ?? '-')
-        ],
-      ),
+    var startTime = (document['startTime'] ?? Timestamp.now()).toDate();
+    return kokaEventCard(
+      title: document['title'] ?? '',
+      content: document['subtitle'] ?? '',
+      onTapAction: () {},
+      hours: startTime
+          .hour
+          .toString(),
+      minutes: startTime
+          .minute
+          .toString(),
     );
   }
 
@@ -33,7 +34,7 @@ class ProgramPage extends StatelessWidget {
                 .where("category", isEqualTo: 'event')
                 .snapshots(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData) return const Text("Loading...");
+              if (!snapshot.hasData) return Center(child: const Text("Laster inn data..."));
               return ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) =>
