@@ -1,12 +1,12 @@
 import 'package:Oase/helpers/asset_helpers.dart';
 import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCardNews.dart';
+import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return kokaCardNews(context: context,
+    return kokaCard(context: context,
         title: document['title'],
         content: document['content']);
   }

@@ -2,7 +2,7 @@ import 'package:Oase/config/application.dart';
 import 'package:Oase/helpers/asset_helpers.dart';
 import 'package:Oase/styles.dart';
 import 'package:Oase/widgets/molecules/weatherWidget.dart';
-import 'package:Oase/widgets/organisms/kokaCard.dart';
+import 'package:Oase/widgets/organisms/kokaCardHeader.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -50,27 +50,30 @@ class HomePageState extends State<HomePage> {
           Container(
             child: Column(
               children: <Widget>[
-                kokaCard(
+                kokaCardHeader(
+                    context: context,
                     category: "Nyheter",
                     title: "Tittel",
                     content:
-                        "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
                     onTapAction: () => Application.router.navigateTo(
                         context, "/news",
                         transition: TransitionType.native)),
-                kokaCard(
+                kokaCardHeader(
+                    context: context,
                     category: "Program",
                     title: "Tittel",
                     content:
-                        "Program content something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    "Program content something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
                     onTapAction: () => Application.router.navigateTo(
                         context, "/program",
                         transition: TransitionType.native)),
-                kokaCard(
+                kokaCardHeader(
+                    context: context,
                     category: "informasjon",
                     title: "Tittel",
                     content:
-                        "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
+                    "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
                     onTapAction: () => Application.router.navigateTo(
                         context, "/info",
                         transition: TransitionType.native)),
