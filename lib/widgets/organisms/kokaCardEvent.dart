@@ -12,17 +12,26 @@ Widget kokaCardEvent(
       BuildContext context,
     onTapAction}) {
   return Container(
+    decoration: new BoxDecoration(boxShadow: [
+      new BoxShadow(
+        color: Styles.colorShadowCardMain,
+        blurRadius: 10,
+        offset: Offset(0, 4),
+      ),
+    ]),
     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
     child: Row(
       children: <Widget>[
         Container(
-          height: 58,
+          height: 62,
           color: Colors.amber,
-          width: 3,
+          width: 4,
         ),
         Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(0))),
           color: Styles.kokaEventCardColorBackground,
-          elevation: 8.0,
+          elevation: 0,
           margin: EdgeInsets.all(0),
           child: InkWell(
               splashColor: Styles.colorPrimary,
@@ -37,10 +46,16 @@ Widget kokaCardEvent(
                             .of(context)
                             .size
                             .width * 0.1,
-                        child: Text(
-                          "$hours\n"
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "$hours",
+                              style: Styles.textEventCardTimeHours,
+                            ), Text(
                               "$minutes",
-                          style: Styles.textEventCardTime,
+                              style: Styles.textEventCardTimeMinutes,
+                            ),
+                          ],
                         ),
                       ),
                       Container(

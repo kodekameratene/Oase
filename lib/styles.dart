@@ -4,10 +4,13 @@ abstract class Styles {
   // Colors
   static const colorPrimary = Color.fromRGBO(76, 165, 133, 1.0);
   static const colorSecondary = Color.fromRGBO(0, 58, 93, 1);
-  static const colorWeatherBg = Color.fromRGBO(200, 250, 200, 0.4);
+  static const colorWeatherBgStart = Color.fromRGBO(125, 209, 179, 1);
+  static const colorWeatherBgEnd = Color.fromRGBO(76, 165, 133, 1);
   static const colorBackgroundColorMain = Color.fromRGBO(235, 235, 235, 1);
   static const colorWeatherTextColor = Colors.white;
   static const colorWeatherSunColor = Color.fromRGBO(255, 216, 0, 1);
+  static var colorShadowCardMain = Color.fromRGBO(0, 0, 0, 0.06);
+
 
   // Images
   static const imgLogoMain = "lib/assets/sommeroase.png";
@@ -38,8 +41,10 @@ abstract class Styles {
   TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textEventCardContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
-  static var textEventCardTime = TextStyle(
-      fontFamily: "Times", fontSize: 20, fontWeight: FontWeight.w200);
+  static var textEventCardTimeHours = TextStyle(
+      fontFamily: "Lato", fontSize: 24, fontWeight: FontWeight.bold);
+  static var textEventCardTimeMinutes = TextStyle(
+      fontFamily: "AnticDidone", fontSize: 25, fontWeight: FontWeight.bold);
 
 
   static var kokaCardNewsTextHeader
@@ -50,9 +55,6 @@ abstract class Styles {
 
   static var kokaCardNewsTextTopRight = TextStyle(
       color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
-
-
-
 
 
 }

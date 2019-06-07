@@ -16,35 +16,53 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Material(
         child: Scaffold(
-      appBar: AppBar(
-        title: AssetHelpers.getAppBarImage(),
-        backgroundColor: Styles.colorPrimary,
-        leading: IconButton(
-          icon: Icon(Icons.settings),
-          onPressed: () {
-            Application.router.navigateTo(context, '/settings',
-                transition: TransitionType.fadeIn);
-          },
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(72),
+            child: AppBar(
+              elevation: 0,
+              title: AssetHelpers.getAppBarImage(),
+              centerTitle: true,
+              backgroundColor: Styles.colorPrimary,
+              leading: IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Application.router.navigateTo(context, '/settings',
+                      transition: TransitionType.fadeIn);
+                },
+              ),
         ),
       ),
       backgroundColor: Styles.colorPrimary,
       body: Container(
-        decoration: new BoxDecoration(
-          gradient: new LinearGradient(
-            colors: [Styles.colorWeatherBg, Styles.colorBackgroundColorMain],
-            begin: const FractionalOffset(0.5, 0),
-            end: const FractionalOffset(0.5, 0.2),
-            stops: [0, 1],
-            tileMode: TileMode.clamp,
-          ),
-        ),
+        color: Styles.colorBackgroundColorMain,
         child: ListView(children: <Widget>[
           Container(
-            padding: EdgeInsets.all(10),
-            height: 81,
-            child: WeatherWidget(
-              temperature: "23",
-              location: "Fredrikstad",
+            decoration: new BoxDecoration(boxShadow: [
+              new BoxShadow(
+                color: Styles.colorShadowCardMain,
+                blurRadius: 10,
+                offset: Offset(0, 4),
+              ),
+            ]),
+            child: Container(
+              decoration: new BoxDecoration(
+                gradient: new LinearGradient(
+                  colors: [
+                    Styles.colorWeatherBgEnd,
+                    Styles.colorWeatherBgStart,
+                  ],
+                  begin: const FractionalOffset(2.8, 0),
+                  end: const FractionalOffset(0.2, 5),
+                  stops: [0.5, 1],
+                  tileMode: TileMode.clamp,
+                ),
+              ),
+              padding: EdgeInsets.all(10),
+              height: 81,
+              child: WeatherWidget(
+                temperature: "23",
+                location: "Fredrikstad",
+              ),
             ),
           ),
           Container(

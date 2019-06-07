@@ -11,6 +11,13 @@ Widget kokaCard(
     String topRight = "21:30",
     Color accentColor = Styles.colorPrimary}) {
   return Container(
+    decoration: new BoxDecoration(boxShadow: [
+      new BoxShadow(
+        color: Styles.colorShadowCardMain,
+        blurRadius: 10,
+        offset: Offset(0, 4),
+      ),
+    ]),
     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -21,8 +28,10 @@ Widget kokaCard(
           width: 4,
         ),
         Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(0))),
           color: Styles.kokaEventCardColorBackground,
-          elevation: 8.0,
+          elevation: 0,
           margin: EdgeInsets.all(0),
           child: InkWell(
               splashColor: Styles.colorPrimary,
@@ -37,10 +46,13 @@ Widget kokaCard(
                           child: Row(
                             children: <Widget>[
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.76,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * 0.8,
                                 child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(title,

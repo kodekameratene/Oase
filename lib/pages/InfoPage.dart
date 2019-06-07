@@ -17,6 +17,7 @@ class InfoPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
           title: AssetHelpers.getAppBarImage(),
+          centerTitle: true,
         ),
         body: StreamBuilder(
             stream: Firestore.instance
