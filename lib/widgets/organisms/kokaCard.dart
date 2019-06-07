@@ -3,66 +3,67 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 Widget kokaCard(
-    {String category, String content, String title, onTapAction}) {
-  return Card(
-    key: Key(category),
-    color: Color.fromRGBO(253, 253, 253, 1),
-    elevation: 8.0,
-    margin: EdgeInsets.all(10),
-    child: InkWell(
-        splashColor: Styles.colorPrimary,
-        child: Container(
-            height: 178,
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(18, 20, 12, 20),
-                  child: RotatedBox(
-                    quarterTurns: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Divider(
-                          color: Color.fromRGBO(112, 112, 112, 1),
-                        ),
-                        Text(
-                          category,
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontFamily: "Times",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 45, 10, 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    {String title = "hello",
+    String content =
+        'Lorum ipsum dolor sit amet complesir met inet und a let nous aprenter',
+    onTapAction,
+    BuildContext context,
+    String topRight = "21:30",
+    Color accentColor = Styles.colorPrimary}) {
+  return Container(
+    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          height: 118,
+          color: accentColor,
+          width: 4,
+        ),
+        Card(
+          color: Styles.kokaEventCardColorBackground,
+          elevation: 8.0,
+          margin: EdgeInsets.all(0),
+          child: InkWell(
+              splashColor: Styles.colorPrimary,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Row(
                     children: <Widget>[
                       Container(
-                        constraints: BoxConstraints(maxWidth: 200),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
-                          child: Text(title,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Styles.textCardHeader),
-                        ),
-                      ),
-                      Container(
-                        constraints: BoxConstraints(maxWidth: 200),
-                        child: Text(content,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            softWrap: true,
-                            style: Styles.textCardContent),
-                      )
+                          height: 128,
+                          padding: EdgeInsets.all(20),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.76,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(title,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Styles.kokaCardNewsTextHeader),
+                                    Text(content,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        softWrap: true,
+                                        style: Styles.kokaCardNewsTextContent),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
                     ],
                   ),
-                )
-              ],
-            )),
-        onTap: () => onTapAction()),
+                ],
+              ),
+              onTap: () => onTapAction()),
+        ),
+      ],
+    ),
   );
 }

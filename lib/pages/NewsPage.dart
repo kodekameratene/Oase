@@ -4,7 +4,7 @@ import 'package:Oase/assets/mock_data/ContentPost.dart';
 import 'package:Oase/helpers/asset_helpers.dart';
 import 'package:Oase/helpers/content_helper.dart';
 import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCardNews.dart';
+import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class NewsPage extends StatelessWidget {
     ];
     Random random = new Random();
     int index = random.nextInt(colors.length);
-    return kokaCardNews(
+    return kokaCard(
       context: context,
       title: document['title'],
       content: document['content'],
