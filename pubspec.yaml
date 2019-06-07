@@ -51,6 +51,17 @@ flutter:
   assets:
     - lib/assets/
 
+  fonts:
+    - family: AnticDidone
+      fonts:
+        - asset: fonts/Antic_Didone/AnticDidone-Regular.ttf
+    - family: AbrilFatface
+      fonts:
+        - asset: fonts/Abril_Fatface/AbrilFatface-Regular.ttf
+    - family: Rokkitt
+      fonts:
+        - asset: fonts/Rokkitt/Rokkitt-Regular.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

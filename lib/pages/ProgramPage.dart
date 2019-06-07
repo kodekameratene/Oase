@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     var startTime = document['startTime'];
@@ -29,6 +28,7 @@ class ProgramPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
           title: AssetHelpers.getAppBarImage(),
+          centerTitle: true,
         ),
         body: StreamBuilder(
             stream: Firestore.instance

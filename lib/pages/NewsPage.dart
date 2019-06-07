@@ -1,16 +1,12 @@
 import 'dart:math';
 
-import 'package:Oase/assets/mock_data/ContentPost.dart';
 import 'package:Oase/helpers/asset_helpers.dart';
-import 'package:Oase/helpers/content_helper.dart';
 import 'package:Oase/styles.dart';
 import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatelessWidget {
-  final List<ContentPost> _newsPosts = ContentHelper.getNews();
-
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     List colors = [
       Colors.amber,
@@ -34,6 +30,7 @@ class NewsPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
           title: AssetHelpers.getAppBarImage(),
+          centerTitle: true,
         ),
         body: StreamBuilder(
             stream: Firestore.instance
