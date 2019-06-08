@@ -21,6 +21,7 @@ Widget kokaCardEvent(
     ]),
     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           height: 62,
