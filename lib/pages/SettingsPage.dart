@@ -23,7 +23,7 @@ class SettingsPage extends StatelessWidget {
                 child: Container(
                   child: new GestureDetector(
                     onTap: () async {
-                      const url = 'https://kodekameratene.github.io';
+                      const url = 'https://koka.no';
                       if (await canLaunch(url)
                       ) {
                         await launch(url);
