@@ -37,7 +37,7 @@ Widget kokaCardEvent(
           child: InkWell(
               splashColor: Styles.colorPrimary,
               child: Container(
-                  height: 60,
+                  height: 64,
                   margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
