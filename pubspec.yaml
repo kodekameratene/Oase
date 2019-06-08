@@ -69,6 +69,9 @@ flutter:
     - family: Didot
       fonts:
         - asset: fonts/Theano-Didot/TheanoDidot-Regular.ttf
+    - family: Libre_Baskerville
+      fonts:
+        - asset: fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

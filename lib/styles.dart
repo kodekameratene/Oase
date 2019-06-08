@@ -41,10 +41,16 @@ abstract class Styles {
   TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textEventCardContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
+
   static var textEventCardTimeHours = TextStyle(
-      fontFamily: "Lato", fontSize: 24, fontWeight: FontWeight.bold);
+      fontFamily: "Libre_Baskerville",
+      fontSize: 26,
+      letterSpacing: 2,
+      fontWeight: FontWeight.bold);
   static var textEventCardTimeMinutes = TextStyle(
-      fontFamily: "AnticDidone", fontSize: 25, fontWeight: FontWeight.bold);
+      fontFamily: "Libre_Baskerville",
+      fontSize: 26,
+      fontWeight: FontWeight.normal);
 
 
   static var kokaCardNewsTextHeader
