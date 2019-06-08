@@ -25,7 +25,7 @@ Widget kokaCardEvent(
       children: <Widget>[
         Container(
           height: 62,
-          color: Colors.amber,
+          color: accentColor,
           width: 4,
         ),
         Card(
@@ -37,36 +37,44 @@ Widget kokaCardEvent(
           child: InkWell(
               splashColor: Styles.colorPrimary,
               child: Container(
-                  height: 64,
-                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery
+                  height: 65,
+                  width: MediaQuery
                             .of(context)
                             .size
-                            .width * 0.1,
+                            .width * 0.8,
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        height: 65,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
                               "$hours",
                               style: Styles.textEventCardTimeHours,
-                            ), Text(
+                            ),
+                            Text(
                               "$minutes",
                               style: Styles.textEventCardTimeMinutes,
                             ),
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: VerticalDivider(),
+                      ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.6,
-                        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+//                        width: MediaQuery
+//                            .of(context)
+//                            .size
+//                            .width * 0.6,
+//                        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+
                           children: <Widget>[
                             Text(title,
                                 maxLines: 1,

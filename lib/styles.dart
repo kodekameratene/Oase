@@ -43,13 +43,12 @@ abstract class Styles {
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
 
   static var textEventCardTimeHours = TextStyle(
-      fontFamily: "Libre_Baskerville",
-      fontSize: 26,
-      letterSpacing: 2,
+      fontFamily: "Didot",
+      fontSize: 20,
       fontWeight: FontWeight.bold);
   static var textEventCardTimeMinutes = TextStyle(
-      fontFamily: "Libre_Baskerville",
-      fontSize: 26,
+      fontFamily: "Didot",
+      fontSize: 18,
       fontWeight: FontWeight.normal);
 
 

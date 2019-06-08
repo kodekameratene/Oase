@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:Oase/helpers/asset_helpers.dart';
 import 'package:Oase/styles.dart';
 import 'package:Oase/widgets/organisms/kokaCardEvent.dart';
@@ -12,6 +14,18 @@ class ProgramPage extends StatelessWidget {
     var formatterMinutes = new DateFormat('mm');
     String hour = formatterHours.format(startTime).toString();
     String minutes = formatterMinutes.format(startTime).toString();
+
+
+    List colors = [
+      Colors.amber,
+      Colors.red,
+      Colors.blue,
+      Styles.colorPrimary
+    ];
+    Random random = new Random();
+    int index = random.nextInt(colors.length);
+
+
     return kokaCardEvent(
       context: context,
       title: document['title'] ?? '',
@@ -19,6 +33,7 @@ class ProgramPage extends StatelessWidget {
       onTapAction: () {},
       hours: hour,
       minutes: minutes,
+      accentColor: colors[index],
     );
   }
 
@@ -34,6 +49,7 @@ class ProgramPage extends StatelessWidget {
             stream: Firestore.instance
                 .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
                 .where("category", isEqualTo: 'event')
+                .orderBy("startTime")
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData)
