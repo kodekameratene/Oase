@@ -10,7 +10,9 @@ Widget kokaCardHeader(
       BuildContext context,
       String topRight = "21:30",
       Color accentColor = Styles.colorPrimary,
-      String category}) {
+      String category,
+      TextStyle categoryStyle,
+    }) {
   return Container(
     key: Key(category),
     padding: EdgeInsets.all(10),
@@ -38,13 +40,13 @@ Widget kokaCardHeader(
                     Padding(
                       padding:
                       const EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                      child: RotatedBox(
-                        quarterTurns: 1,
-                        child: Text(
-                          category,
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontFamily: "AnticDidone",
+                      child: Container(
+                        width: 40,
+                        child: RotatedBox(
+                          quarterTurns: 1,
+                          child: Text(
+                            category,
+                            style: categoryStyle,
                           ),
                         ),
                       ),

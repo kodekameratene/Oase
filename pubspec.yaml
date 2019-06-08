@@ -60,6 +60,15 @@ flutter:
     - family: Rokkitt
       fonts:
         - asset: fonts/Rokkitt/Rokkitt-Regular.ttf
+    - family: BungeeShade
+      fonts:
+        - asset: fonts/Bungee_Shade/BungeeShade-Regular.ttf
+    - family: Quattrocento_Sans
+      fonts:
+        - asset: fonts/Quattrocento_Sans/QuattrocentoSans-Regular.ttf
+    - family: Didot
+      fonts:
+        - asset: fonts/Theano-Didot/TheanoDidot-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

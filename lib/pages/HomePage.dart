@@ -69,6 +69,10 @@ class HomePageState extends State<HomePage> {
             child: Column(
               children: <Widget>[
                 kokaCardHeader(
+                    categoryStyle: TextStyle(
+                      fontSize: 28,
+                      fontFamily: "Didot",
+                    ),
                     context: context,
                     category: "Nyheter",
                     title: "Tittel",
@@ -78,6 +82,10 @@ class HomePageState extends State<HomePage> {
                         context, "/news",
                         transition: TransitionType.native)),
                 kokaCardHeader(
+                    categoryStyle: TextStyle(
+                      fontSize: 28,
+                      fontFamily: "BungeeShade",
+                    ),
                     context: context,
                     category: "Program",
                     title: "Tittel",
@@ -87,6 +95,10 @@ class HomePageState extends State<HomePage> {
                         context, "/program",
                         transition: TransitionType.native)),
                 kokaCardHeader(
+                    categoryStyle: TextStyle(
+                      fontSize: 28,
+                      fontFamily: "Quattrocento_Sans",
+                    ),
                     context: context,
                     category: "informasjon",
                     title: "Tittel",
