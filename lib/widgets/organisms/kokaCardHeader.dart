@@ -51,6 +51,14 @@ Widget kokaCardHeader(
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
+                      child: Container(height: 124,
+                          child: VerticalDivider(
+                            width: 1,
+                            color: Color.fromRGBO(0, 0, 0, 1),
+                          )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Container(
                           height: 128,
                           child: Row(
