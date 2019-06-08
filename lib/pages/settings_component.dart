@@ -2,8 +2,10 @@ import 'package:Oase/helpers/appInfo_helper.dart';
 import 'package:Oase/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,21 +21,29 @@ class SettingsPage extends StatelessWidget {
           children: <Widget>[
             Flexible(
                 child: Container(
-              child: new GestureDetector(
-                onDoubleTap: () {
-//                todo: Implement easter egg
-                },
-                child: Text(
-                  '${AppInfo.appName} v${AppInfo.version}\n ${AppInfo.developers}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black38),
-                ),
-              ),
-              alignment: FractionalOffset(0.5, 0.9),
-            )),
+                  child: new GestureDetector(
+                    onTap: () async {
+                      const url = 'https://kodekameratene.github.io';
+                      if (await canLaunch(url)
+                      ) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Text(
+                      '${AppInfo.appName} v${AppInfo.version}\n ${AppInfo
+                          .developers}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black38),
+                    ),
+                  ),
+                  alignment: FractionalOffset(0.5, 0.9),
+                )),
           ],
         ),
       ),
     );
   }
 }
+
