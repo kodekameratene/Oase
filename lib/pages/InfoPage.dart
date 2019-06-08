@@ -25,7 +25,8 @@ class InfoPage extends StatelessWidget {
                 .where("category", isEqualTo: 'info')
                 .snapshots(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData) return const Text("Loading...");
+              if (!snapshot.hasData)
+                return Center(child: Text("Laster inn data..."));
               return ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) =>
