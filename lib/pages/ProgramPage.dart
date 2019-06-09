@@ -27,7 +27,6 @@ class ProgramPage extends StatelessWidget {
 
 
     return kokaCardEvent(
-      context: context,
       title: document['title'] ?? '',
       content: document['subtitle'] ?? '',
       onTapAction: () {},
