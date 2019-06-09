@@ -5,6 +5,7 @@ import 'package:Oase/widgets/molecules/weatherWidget.dart';
 import 'package:Oase/widgets/organisms/kokaCardHeader.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,31 +35,41 @@ class HomePageState extends State<HomePage> {
       ),
           backgroundColor: Styles.colorBackgroundColorMain,
           body: ListView(children: <Widget>[
-            Container(
-              decoration: new BoxDecoration(
-                gradient: new LinearGradient(
-                  colors: [
-                    Styles.colorWeatherBgEnd,
-                    Styles.colorWeatherBgStart,
-                  ],
-                  begin: const FractionalOffset(2.8, 0),
-                  end: const FractionalOffset(0.2, 5),
-                  stops: [0.5, 1],
-                  tileMode: TileMode.clamp,
-                ),
-                boxShadow: [
-                  new BoxShadow(
-                    color: Styles.colorShadowCardMain,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
+            GestureDetector(onTap: () async {
+              const url = 'https://www.yr.no/nb/værvarsel/graf/1-2753969/Norge/Østfold/Fredrikstad/Kongstenhallen';
+              if (await canLaunch(url)
+              ) {
+                await launch(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+              child: Container(
+                decoration: new BoxDecoration(
+                  gradient: new LinearGradient(
+                    colors: [
+                      Styles.colorWeatherBgEnd,
+                      Styles.colorWeatherBgStart,
+                    ],
+                    begin: const FractionalOffset(2.8, 0),
+                    end: const FractionalOffset(0.2, 5),
+                    stops: [0.5, 1],
+                    tileMode: TileMode.clamp,
                   ),
-                ],
-              ),
-              padding: EdgeInsets.all(10),
-              height: 81,
-              child: WeatherWidget(
-                temperature: "23",
-                location: "Fredrikstad",
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Styles.colorShadowCardMain,
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                padding: EdgeInsets.all(10),
+                height: 81,
+                child: WeatherWidget(
+                  temperature: "23",
+                  location: "Fredrikstad",
+                ),
               ),
             ),
             Column(
