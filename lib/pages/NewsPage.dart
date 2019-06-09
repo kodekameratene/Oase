@@ -17,7 +17,6 @@ class NewsPage extends StatelessWidget {
     Random random = new Random();
     int index = random.nextInt(colors.length);
     return kokaCard(
-      context: context,
       title: document['title'],
       content: document['content'],
       accentColor: colors[index],

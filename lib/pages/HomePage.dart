@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage> {
     return Material(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(72),
+            preferredSize: Size.fromHeight(70),
             child: AppBar(
               elevation: 0,
               title: AssetHelpers.getAppBarImage(),
@@ -32,19 +32,9 @@ class HomePageState extends State<HomePage> {
               ),
         ),
       ),
-      backgroundColor: Styles.colorPrimary,
-      body: Container(
-        color: Styles.colorBackgroundColorMain,
-        child: ListView(children: <Widget>[
-          Container(
-            decoration: new BoxDecoration(boxShadow: [
-              new BoxShadow(
-                color: Styles.colorShadowCardMain,
-                blurRadius: 10,
-                offset: Offset(0, 4),
-              ),
-            ]),
-            child: Container(
+          backgroundColor: Styles.colorBackgroundColorMain,
+          body: ListView(children: <Widget>[
+            Container(
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(
                   colors: [
@@ -56,6 +46,13 @@ class HomePageState extends State<HomePage> {
                   stops: [0.5, 1],
                   tileMode: TileMode.clamp,
                 ),
+                boxShadow: [
+                  new BoxShadow(
+                    color: Styles.colorShadowCardMain,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                  ),
+                ],
               ),
               padding: EdgeInsets.all(10),
               height: 81,
@@ -64,54 +61,53 @@ class HomePageState extends State<HomePage> {
                 location: "Fredrikstad",
               ),
             ),
-          ),
-          Container(
-            child: Column(
+            Column(
               children: <Widget>[
                 kokaCardHeader(
-                    categoryStyle: TextStyle(
+                    categoryStyle:
+                    TextStyle(
                       fontSize: 28,
                       fontFamily: "Didot",
                     ),
-                    context: context,
                     category: "Nyheter",
-                    title: "Tittel",
+                    title: "Nyheter",
                     content:
-                    "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
-                    onTapAction: () => Application.router.navigateTo(
-                        context, "/news",
-                        transition: TransitionType.native)),
+                    "Her sender vi deg meldinger om hva som skjer, når det skjer.",
+                    onTapAction: () =>
+                        Application.router.navigateTo(
+                            context, "/news",
+                            transition: TransitionType.native)),
                 kokaCardHeader(
-                    categoryStyle: TextStyle(
+                    categoryStyle:
+                    TextStyle(
                       fontSize: 28,
                       fontFamily: "BungeeShade",
                     ),
-                    context: context,
                     category: "Program",
-                    title: "Tittel",
+                    title: "Program",
                     content:
-                    "Program content something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
-                    onTapAction: () => Application.router.navigateTo(
-                        context, "/program",
-                        transition: TransitionType.native)),
+                    "Her finner du programmet for helgen.",
+                    onTapAction: () =>
+                        Application.router.navigateTo(
+                            context, "/program",
+                            transition: TransitionType.native)),
                 kokaCardHeader(
-                    categoryStyle: TextStyle(
+                    categoryStyle:
+                    TextStyle(
                       fontSize: 28,
                       fontFamily: "Quattrocento_Sans",
                     ),
-                    context: context,
                     category: "informasjon",
-                    title: "Tittel",
+                    title: "Informasjon",
                     content:
-                    "Nyhets conteent something ipsum dolor sit amet cant follow all this text. Soon to be clipped because we only can show three lines",
-                    onTapAction: () => Application.router.navigateTo(
-                        context, "/info",
-                        transition: TransitionType.native)),
+                    "Her finner du relevant informasjon for en super uke.",
+                    onTapAction: () =>
+                        Application.router.navigateTo(
+                            context, "/info",
+                            transition: TransitionType.native)),
               ],
             ),
-          ),
-        ]),
-      ),
+          ]),
     ));
   }
 }

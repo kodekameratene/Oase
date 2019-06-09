@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return kokaCard(context: context,
+    return kokaCard(
         title: document['title'],
         content: document['content']);
   }

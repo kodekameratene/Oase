@@ -9,17 +9,9 @@ Widget kokaCardEvent(
     Color accentColor,
     String hours = '12',
     String minutes = '45',
-      BuildContext context,
     onTapAction}) {
-  return Container(
-    decoration: new BoxDecoration(boxShadow: [
-      new BoxShadow(
-        color: Styles.colorShadowCardMain,
-        blurRadius: 10,
-        offset: Offset(0, 4),
-      ),
-    ]),
-    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+  return Padding(
+    padding: const EdgeInsets.all(10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -28,69 +20,66 @@ Widget kokaCardEvent(
           color: accentColor,
           width: 4,
         ),
-        Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(0))),
-          color: Styles.kokaEventCardColorBackground,
-          elevation: 0,
-          margin: EdgeInsets.all(0),
-          child: InkWell(
-              splashColor: Styles.colorPrimary,
-              child: Container(
-                  height: 65,
-                  width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.8,
-                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        height: 65,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "$hours",
-                              style: Styles.textEventCardTimeHours,
+        Expanded(
+          child: Container(
+            decoration: new BoxDecoration(boxShadow: [
+              new BoxShadow(
+                color: Styles.colorShadowCardMain,
+                blurRadius: 10,
+                offset: Offset(0, 4),
+              ),
+            ]),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(0))),
+              color: Styles.kokaEventCardColorBackground,
+              elevation: 0,
+              margin: EdgeInsets.all(0),
+              child: InkWell(
+                  splashColor: Styles.colorPrimary,
+                  child: Container(
+                      height: 60,
+                      margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      child: Row(
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "$hours",
+                                style: Styles.textEventCardTimeHours,
+                              ),
+                              Text(
+                                "$minutes",
+                                style: Styles.textEventCardTimeMinutes,
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 10, top: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(title,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Styles.textEventCardHeader),
+                                  Text(content,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      softWrap: true,
+                                      style: Styles.textEventCardContent),
+                                ],
+                              ),
                             ),
-                            Text(
-                              "$minutes",
-                              style: Styles.textEventCardTimeMinutes,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: VerticalDivider(),
-                      ),
-                      Container(
-//                        width: MediaQuery
-//                            .of(context)
-//                            .size
-//                            .width * 0.6,
-//                        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-
-                          children: <Widget>[
-                            Text(title,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: Styles.textEventCardHeader),
-                            Text(content,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                softWrap: true,
-                                style: Styles.textEventCardContent),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-              onTap: () => onTapAction()),
+                          ),
+                        ],
+                      )),
+                  onTap: () => onTapAction()),
+            ),
+          ),
         ),
       ],
     ),
