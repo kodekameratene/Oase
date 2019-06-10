@@ -58,6 +58,7 @@ class ProgramPage extends StatelessWidget {
                   itemBuilder: (context, index) =>
                       _buildListItem(context, snapshot.data.documents[index]));
             }),
+        backgroundColor: Styles.colorBackgroundColorMain,
       ),
     );
   }
