@@ -2,6 +2,7 @@ import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+//todo: Add support for DocumentSnapshot as param and show all fields relevant fields
 Widget kokaCardEvent(
     {String title = "hello",
     String content =

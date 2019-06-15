@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'ContentViewerPage.dart';
+
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     var startTime = _convertStamp(document['startTime']);
@@ -15,25 +17,20 @@ class ProgramPage extends StatelessWidget {
     String hour = formatterHours.format(startTime).toString();
     String minutes = formatterMinutes.format(startTime).toString();
 
-
-    List colors = [
-      Colors.amber,
-      Colors.red,
-      Colors.blue,
-      Styles.colorPrimary
-    ];
+    List colors = [Colors.amber, Colors.red, Colors.blue, Styles.colorPrimary];
     Random random = new Random();
     int index = random.nextInt(colors.length);
 
-
     return kokaCardEvent(
-      title: document['title'] ?? '',
-      content: document['subtitle'] ?? '',
-      onTapAction: () {},
-      hours: hour,
-      minutes: minutes,
-      accentColor: colors[index],
-    );
+        title: document['title'] ?? '',
+        content: document['subtitle'] ?? '',
+        hours: hour,
+        minutes: minutes,
+        accentColor: colors[index],
+        onTapAction: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ContentViewerPage(document))));
   }
 
   Widget build(context) {
@@ -47,7 +44,7 @@ class ProgramPage extends StatelessWidget {
         body: StreamBuilder(
             stream: Firestore.instance
                 .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
-                .where("category", isEqualTo: 'event')
+                .where("page", arrayContains: 'program')
                 .orderBy("startTime")
                 .snapshots(),
             builder: (context, snapshot) {
