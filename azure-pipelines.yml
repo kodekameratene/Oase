@@ -17,17 +17,18 @@ steps:
 - task: FlutterTest@0
   displayName: 'Flutter Test'
 
-- task: FlutterBuild@0
-  displayName: 'Flutter Build'
-  inputs:
-    target: all
+# Lets only do testing at this stage
+# - task: FlutterBuild@0
+#   displayName: 'Flutter Build'
+#   inputs:
+#     target: all
   
-- task: PublishBuildArtifacts@1
-  displayName: "Publish Android apk"
-  inputs:
-    PathtoPublish: build/app/outputs/apk/release/app-release.apk
+# - task: PublishBuildArtifacts@1
+#   displayName: "Publish Android apk"
+#   inputs:
+#     PathtoPublish: build/app/outputs/apk/release/app-release.apk
 
-- task: PublishBuildArtifacts@1
-  displayName: "Publish iOS app"
-  inputs:
-    PathtoPublish: /build/ios/iphoneos/Runner.app
+# - task: PublishBuildArtifacts@1
+#   displayName: "Publish iOS app"
+#   inputs:
+#     PathtoPublish: /build/ios/iphoneos/Runner.app
