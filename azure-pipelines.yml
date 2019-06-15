@@ -21,3 +21,5 @@ steps:
   displayName: 'Flutter Build'
   
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: build/app/outputs/apk/release/app-release.apk
