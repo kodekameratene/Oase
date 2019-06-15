@@ -10,6 +10,8 @@ class WeatherWidget extends StatelessWidget {
   const WeatherWidget({Key key, this.temperature, this.location})
       : super(key: key);
 
+//--request GET https://api.met.no/weatherapi/locationforecast/1.9/\?lat\=59.199432\&lon\=10.95799
+
   @override
   Widget build(BuildContext context) {
     return Row(

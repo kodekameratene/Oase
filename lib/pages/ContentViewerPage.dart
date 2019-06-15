@@ -1,11 +1,11 @@
-import 'package:Oase/assets/mock_data/ContentPost.dart';
 import 'package:Oase/styles.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ContentViewerPage extends StatelessWidget {
-  ContentViewerPage(this.contentPost);
+  ContentViewerPage(this.document);
 
-  final ContentPost contentPost;
+  final DocumentSnapshot document;
 
   @override
   Widget build(BuildContext context) {
@@ -13,59 +13,55 @@ class ContentViewerPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
-          title: Text(contentPost.title),
+          title: Text(document["title"]),
         ),
         body: Center(
-          child: Container(
-            child: ListView(children: <Widget>[
-              content(),
-              img(),
-              startTime(),
-              endTime(),
-              number(),
-              url(),
-              location(),
-              showCategories(),
-            ]),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: _buildView(),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget content() {
-    return Text(contentPost.content);
+  // Note: This might not be the best way to do this,
+  // but it was what I came up with in a time of need...
+  // If you figure out a simpler way to solve this, please refactor. <3 - Henry
+  List _buildView() {
+    List<Widget> widgetList = [
+      if (_exists("title")) Text(document["title"]),
+      if (_exists("content")) Text(document["content"]),
+      if (_exists("location")) Text(document["location"]),
+      if (_exists("img")) img(),
+      if (_exists("startTime"))
+        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
+      if (_exists("endTime"))
+        Text((document["endTime"] as Timestamp).toDate().toIso8601String()),
+      if (_exists("timestamp"))
+        Text((document["timestamp"] as Timestamp).toDate().toIso8601String()),
+      if (_exists("url")) Text(document["url"]),
+      if (_exists("category")) Text(document["category"].toString()),
+      if (_exists("track")) Text(document["track"].toString()),
+      if (_exists("linkedContent")) Text(document["linkedContent"].toString()),
+    ];
+
+    return List<Widget>.generate(widgetList.length, (int index) {
+      return widgetList[index];
+    });
   }
 
-  Widget img() {
-    return Image.network(
-      contentPost.img,
-      height: 100,
-      width: 100,
-    );
+  /// Checks if the document have a field
+  /// that matches the provided string.
+  /// Returns True if the string does exist,
+  /// and False if not.
+  _exists(String s) {
+    return ((document[s] ?? '') != '');
   }
 
-  Widget startTime() {
-    return Text(contentPost.startTime.toString());
-  }
-
-  Widget endTime() {
-    return Text(contentPost.endTime.toString());
-  }
-
-  Widget number() {
-    return Text(contentPost.number.toString());
-  }
-
-  Widget url() {
-    return Text(contentPost.url.toString());
-  }
-
-  Widget location() {
-    return Text(contentPost.location.toString());
-  }
-
-  Widget showCategories() {
-    return Text(contentPost.showCategories.toString());
-  }
+  Widget img() => Image.network(
+        document['img'],
+      );
 }

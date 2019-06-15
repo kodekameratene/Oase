@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:Oase/helpers/asset_helpers.dart';
+import 'package:Oase/pages/ContentViewerPage.dart';
 import 'package:Oase/styles.dart';
 import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,19 +9,17 @@ import 'package:flutter/material.dart';
 
 class NewsPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    List colors = [
-      Colors.amber,
-      Colors.red,
-      Colors.blue,
-      Styles.colorPrimary
-    ];
+    List colors = [Colors.amber, Colors.red, Colors.blue, Styles.colorPrimary];
     Random random = new Random();
     int index = random.nextInt(colors.length);
     return kokaCard(
-      title: document['title'],
-      content: document['content'],
-      accentColor: colors[index],
-    );
+        title: document['title'],
+        content: document['content'],
+        accentColor: colors[index],
+        onTapAction: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ContentViewerPage(document))));
   }
 
   Widget build(context) {
@@ -34,7 +33,9 @@ class NewsPage extends StatelessWidget {
         body: StreamBuilder(
             stream: Firestore.instance
                 .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
-                .where("category", isEqualTo: 'news')
+                .where("page", arrayContains: 'news')
+                .where("timestamp", isLessThanOrEqualTo: Timestamp.now())
+                .orderBy("timestamp", descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData)
