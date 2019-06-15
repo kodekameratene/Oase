@@ -8,10 +8,7 @@ trigger:
 - develop
 
 pool:
-  name: Hosted VS2017
-
-# pool:
-#   vmImage: 'macos-latest'
+  vmImage: 'macos-latest'
 
 steps:
 - task: FlutterInstall@0
