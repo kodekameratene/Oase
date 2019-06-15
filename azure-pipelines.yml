@@ -18,12 +18,14 @@ steps:
 #     configuration: 'Release'
 #     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
 #     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
+- task: FlutterBuild@0
+  displayName: 'Flutter Build'
 
 - task: Xcode@5
   displayName: 'Xcode build'
   inputs:
     xcWorkspacePath: ios/Runner.xcworkspace
-    # scheme: koka  
+    scheme: Runner  
     xcodeVersion: 9
     packageApp: true
     exportPath: '$(agent.builddirectory)/output/$(SDK)/$(BuildConfiguration)'
