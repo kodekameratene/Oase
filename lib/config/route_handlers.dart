@@ -1,14 +1,14 @@
-import 'package:Oase/helpers/content_helper.dart';
-import 'package:Oase/pages/ContentViewerPage.dart';
-import 'package:Oase/pages/HomePage.dart';
-import 'package:Oase/pages/InfoPage.dart';
-import 'package:Oase/pages/NewsPage.dart';
-import 'package:Oase/pages/ProgramPage.dart';
-import 'package:Oase/pages/SettingsPage.dart';
-import 'package:Oase/pages/demo_simple_component.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:oase/helpers/content_helper.dart';
+import 'package:oase/pages/ContentViewerPage.dart';
+import 'package:oase/pages/HomePage.dart';
+import 'package:oase/pages/InfoPage.dart';
+import 'package:oase/pages/NewsPage.dart';
+import 'package:oase/pages/ProgramPage.dart';
+import 'package:oase/pages/SettingsPage.dart';
+import 'package:oase/pages/demo_simple_component.dart';
 
 import '../helpers/color_helpers.dart';
 

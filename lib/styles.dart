@@ -11,6 +11,30 @@ abstract class Styles {
   static const colorWeatherSunColor = Color.fromRGBO(255, 216, 0, 1);
   static var colorShadowCardMain = Color.fromRGBO(0, 0, 0, 0.06);
 
+  // AccentColors for our Categories
+  //  Mat
+  static var colorAccentCategoryFoodStart = Colors.greenAccent;
+  static var colorAccentCategoryFoodEnd = Colors.green;
+
+  // Møte
+  static var colorAccentCategoryMeetingStart = Colors.redAccent;
+  static var colorAccentCategoryMeetingEnd = Colors.red;
+
+  // Seminar
+  static var colorAccentCategorySeminarStart = Colors.yellowAccent;
+  static var colorAccentCategorySeminarEnd = Colors.yellow;
+
+  // Samling
+  static var colorAccentCategoryGatheringStart = Colors.deepPurpleAccent;
+  static var colorAccentCategoryGatheringEnd = Colors.deepPurple;
+
+  // Konsert
+  static var colorAccentCategoryConcertStart = Colors.black12;
+  static var colorAccentCategoryConcertEnd = Colors.black;
+
+  // Forestilling
+  static var colorAccentCategoryPerformanceStart = Colors.blueAccent;
+  static var colorAccentCategoryPerformanceEnd = Colors.blue;
 
   // Images
   static const imgLogoMain = "lib/assets/sommeroase.png";
@@ -35,31 +59,22 @@ abstract class Styles {
   static var weatherWidgetTextLocation =
       TextStyle(fontSize: 17, color: Styles.colorWeatherTextColor);
 
-
   static var kokaEventCardColorBackground = Color.fromRGBO(253, 253, 253, 1);
   static var textEventCardHeader =
-  TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textEventCardContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
 
-  static var textEventCardTimeHours = TextStyle(
-      fontFamily: "Didot",
-      fontSize: 20,
-      fontWeight: FontWeight.bold);
+  static var textEventCardTimeHours =
+      TextStyle(fontFamily: "Didot", fontSize: 20, fontWeight: FontWeight.bold);
   static var textEventCardTimeMinutes = TextStyle(
-      fontFamily: "Didot",
-      fontSize: 18,
-      fontWeight: FontWeight.normal);
+      fontFamily: "Didot", fontSize: 18, fontWeight: FontWeight.normal);
 
-
-  static var kokaCardNewsTextHeader
-  = TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
-  static var kokaCardNewsTextContent
-  = TextStyle(
+  static var kokaCardNewsTextHeader =
+      TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
+  static var kokaCardNewsTextContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
 
-  static var kokaCardNewsTextTopRight = TextStyle(
-      color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
-
-
+  static var kokaCardNewsTextTopRight =
+      TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
 }

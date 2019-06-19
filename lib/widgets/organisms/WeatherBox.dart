@@ -1,6 +1,6 @@
-import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/molecules/weatherWidget.dart';
 import 'package:flutter/widgets.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/molecules/weatherWidget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WeatherBox extends StatelessWidget {

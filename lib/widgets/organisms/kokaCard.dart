@@ -1,6 +1,6 @@
-import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:oase/styles.dart';
 
 Widget kokaCard(
     {String title = "hello",

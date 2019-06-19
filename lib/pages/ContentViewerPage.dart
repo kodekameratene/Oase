@@ -1,6 +1,6 @@
-import 'package:Oase/styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/styles.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -36,12 +36,12 @@ class ContentViewerPage extends StatelessWidget {
       if (_exists("content")) Text(document["content"]),
       if (_exists("location")) Text(document["location"]),
       if (_exists("img")) img(),
-      if (_exists("startTime"))
-        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
-      if (_exists("endTime"))
-        Text((document["endTime"] as Timestamp).toDate().toIso8601String()),
-      if (_exists("timestamp"))
-        Text((document["timestamp"] as Timestamp).toDate().toIso8601String()),
+//      if (_exists("startTime"))
+//        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
+//      if (_exists("endTime"))
+//        Text((document["endTime"] as Timestamp).toDate().toIso8601String()),
+//      if (_exists("timestamp"))
+//        Text((document["timestamp"] as Timestamp).toDate().toIso8601String()),
       if (_exists("url")) Text(document["url"]),
       if (_exists("category")) Text(document["category"].toString()),
       if (_exists("track")) Text(document["track"].toString()),

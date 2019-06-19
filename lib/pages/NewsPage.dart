@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:Oase/helpers/asset_helpers.dart';
-import 'package:Oase/pages/ContentViewerPage.dart';
-import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/pages/ContentViewerPage.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/organisms/kokaCard.dart';
 
 class NewsPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
@@ -32,7 +32,7 @@ class NewsPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
+                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
                 .where("page", arrayContains: 'news')
                 .where("timestamp", isLessThanOrEqualTo: Timestamp.now())
                 .orderBy("timestamp", descending: true)

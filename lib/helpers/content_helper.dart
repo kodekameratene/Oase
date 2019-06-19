@@ -1,4 +1,5 @@
-import 'package:Oase/assets/mock_data/ContentPost.dart';
+
+import 'package:oase/assets/mock_data/ContentPost.dart';
 
 /// Collect all helper methods here for
 /// getting and setting content related stuff...
