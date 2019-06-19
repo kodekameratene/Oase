@@ -1,4 +1,4 @@
-package com.example.oase;
+package no.oase.festival;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
