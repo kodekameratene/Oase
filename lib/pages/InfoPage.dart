@@ -27,7 +27,7 @@ class InfoPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
+                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
                 .where("page", arrayContains: 'info')
                 .orderBy("index")
                 .snapshots(),

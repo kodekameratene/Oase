@@ -32,7 +32,7 @@ class NewsPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
+                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
                 .where("page", arrayContains: 'news')
                 .where("timestamp", isLessThanOrEqualTo: Timestamp.now())
                 .orderBy("timestamp", descending: true)
