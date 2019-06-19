@@ -11,11 +11,11 @@ import 'ContentViewerPage.dart';
 
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    var startTime = _convertStamp(document['startTime']);
-    var formatterHours = new DateFormat('hh');
-    var formatterMinutes = new DateFormat('mm');
-    String hour = formatterHours.format(startTime).toString();
-    String minutes = formatterMinutes.format(startTime).toString();
+//    var startTime = _convertStamp(document['startTime']);
+//    var formatterHours = new DateFormat('hh');
+//    var formatterMinutes = new DateFormat('mm');
+//    String hour = formatterHours.format(startTime).toString();
+//    String minutes = formatterMinutes.format(startTime).toString();
 
     List colors = [Colors.amber, Colors.red, Colors.blue, Styles.colorPrimary];
     Random random = new Random();
@@ -24,8 +24,8 @@ class ProgramPage extends StatelessWidget {
     return kokaCardEvent(
         title: document['title'] ?? '',
         content: document['subtitle'] ?? '',
-        hours: hour,
-        minutes: minutes,
+//        hours: hour,
+//        minutes: minutes,
         accentColor: colors[index],
         onTapAction: () => Navigator.push(
             context,
@@ -43,7 +43,7 @@ class ProgramPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
+                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
                 .where("page", arrayContains: 'program')
                 .orderBy("startTime")
                 .snapshots(),
