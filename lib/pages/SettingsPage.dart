@@ -1,7 +1,7 @@
-import 'package:Oase/helpers/appInfo_helper.dart';
-import 'package:Oase/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/appInfo_helper.dart';
+import 'package:oase/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {

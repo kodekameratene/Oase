@@ -1,6 +1,6 @@
-import 'package:Oase/styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/styles.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);

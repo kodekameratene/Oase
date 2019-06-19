@@ -1,5 +1,5 @@
-import 'package:Oase/helpers/color_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/color_helpers.dart';
 
 class DemoSimpleComponent extends StatelessWidget {
   DemoSimpleComponent(

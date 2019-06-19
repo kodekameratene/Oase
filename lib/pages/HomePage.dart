@@ -1,9 +1,9 @@
-import 'package:Oase/config/application.dart';
-import 'package:Oase/helpers/asset_helpers.dart';
-import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCardHeader.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/config/application.dart';
+import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/organisms/kokaCardHeader.dart';
 
 class HomePage extends StatefulWidget {
   @override

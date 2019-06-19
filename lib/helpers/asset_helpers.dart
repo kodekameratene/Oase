@@ -1,5 +1,5 @@
-import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/styles.dart';
 
 class AssetHelpers {
   static getAppBarImage() {
