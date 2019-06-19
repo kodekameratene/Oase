@@ -1,4 +1,4 @@
-package no.kodekameratene.jonah;
+package no.oase.festival;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
