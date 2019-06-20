@@ -1,6 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:oase/helpers/convertTimeStamp_helper.dart';
+import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
+import 'package:oase/widgets/organisms/kokaCard.dart';
+import 'package:oase/widgets/organisms/kokaCardEvent.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -9,6 +14,11 @@ class ContentViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var startTime = convertStamp(document['startTime']);
+    var formatterHours = new DateFormat('hh');
+    var formatterMinutes = new DateFormat('mm');
+    String hour = formatterHours.format(startTime).toString();
+    String minutes = formatterMinutes.format(startTime).toString();
     return Material(
       child: Scaffold(
         appBar: AppBar(
@@ -17,11 +27,30 @@ class ContentViewerPage extends StatelessWidget {
         ),
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: _buildView(),
-            ),
-          ),
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  kokaCardEvent(
+                    title: document['title'] ?? '',
+                    content: document['content'] ?? '',
+                    hours: hour,
+                    minutes: minutes,
+                    colorStart: mapCategoryToStartColor(
+                        document['category'].toString()),
+                    colorEnd: mapCategoryToEndColor(
+                        document['category'].toString()),
+                  ),
+                  img(),
+                  kokaCard(
+                    title: document['title'] ?? '',
+                    content: document['content'] ?? '',
+                    colorStart: mapCategoryToStartColor(
+                        document['category'].toString()),
+                    colorEnd:
+                        mapCategoryToEndColor(document['category'].toString()),
+                  ),
+                ],
+              )),
         ),
       ),
     );
@@ -32,20 +61,28 @@ class ContentViewerPage extends StatelessWidget {
   // If you figure out a simpler way to solve this, please refactor. <3 - Henry
   List _buildView() {
     List<Widget> widgetList = [
-      if (_exists("title")) Text(document["title"]),
-      if (_exists("content")) Text(document["content"]),
-      if (_exists("location")) Text(document["location"]),
-      if (_exists("img")) img(),
+      if (_exists("title") && _exists("content"))
+        kokaCardEvent(title: document['title'], content: document['content']),
+      if (_exists("content"))
+        Text(document["content"]),
+      if (_exists("location"))
+        Text(document["location"]),
+      if (_exists("img"))
+        img(),
 //      if (_exists("startTime"))
 //        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
 //      if (_exists("endTime"))
 //        Text((document["endTime"] as Timestamp).toDate().toIso8601String()),
 //      if (_exists("timestamp"))
 //        Text((document["timestamp"] as Timestamp).toDate().toIso8601String()),
-      if (_exists("url")) Text(document["url"]),
-      if (_exists("category")) Text(document["category"].toString()),
-      if (_exists("track")) Text(document["track"].toString()),
-      if (_exists("linkedContent")) Text(document["linkedContent"].toString()),
+      if (_exists("url"))
+        Text(document["url"]),
+      if (_exists("category"))
+        Text(document["category"].toString()),
+      if (_exists("track"))
+        Text(document["track"].toString()),
+      if (_exists("linkedContent"))
+        Text(document["linkedContent"].toString()),
     ];
 
     return List<Widget>.generate(widgetList.length, (int index) {
@@ -61,7 +98,12 @@ class ContentViewerPage extends StatelessWidget {
     return ((document[s] ?? '') != '');
   }
 
-  Widget img() => Image.network(
+  Widget img() {
+    if (_exists('img')) {
+      return Image.network(
         document['img'],
       );
+    }
+    return SizedBox.shrink();
+  }
 }

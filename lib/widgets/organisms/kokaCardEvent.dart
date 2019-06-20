@@ -3,14 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:oase/styles.dart';
 
 //todo: Add support for DocumentSnapshot as param and show all fields relevant fields
-Widget kokaCardEvent(
-    {String title = "hello",
-    String content =
-        'Lorum ipsum dolor sit amet complesir met inet und a let nous aprenter',
-    Color accentColor,
-    String hours = '12',
-    String minutes = '45',
-    onTapAction}) {
+Widget kokaCardEvent({
+  String title,
+  String content,
+  Color colorStart,
+  Color colorEnd,
+  String hours = '--',
+  String minutes = '--',
+  onTapAction,
+}) {
   return Padding(
     padding: const EdgeInsets.all(10),
     child: Row(
@@ -18,7 +19,16 @@ Widget kokaCardEvent(
       children: <Widget>[
         Container(
           height: 62,
-          color: accentColor,
+          decoration: new BoxDecoration(
+            gradient: new LinearGradient(
+              colors: [
+                colorStart,
+                colorEnd,
+              ],
+              begin: const FractionalOffset(1, 0),
+              end: const FractionalOffset(0, 1),
+            ),
+          ),
           width: 4,
         ),
         Expanded(
