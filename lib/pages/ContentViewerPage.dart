@@ -6,6 +6,8 @@ import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/organisms/kokaCard.dart';
 import 'package:oase/widgets/organisms/kokaCardEvent.dart';
+import 'package:oase/widgets/molecules/fullScreenImage.dart';
+
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -40,7 +42,7 @@ class ContentViewerPage extends StatelessWidget {
                     colorEnd: mapCategoryToEndColor(
                         document['category'].toString()),
                   ),
-                  img(),
+                  img(context),
                   kokaCard(
                     title: document['title'] ?? '',
                     content: document['content'] ?? '',
@@ -68,7 +70,7 @@ class ContentViewerPage extends StatelessWidget {
       if (_exists("location"))
         Text(document["location"]),
       if (_exists("img"))
-        img(),
+        //img(context),
 //      if (_exists("startTime"))
 //        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
 //      if (_exists("endTime"))
@@ -98,10 +100,20 @@ class ContentViewerPage extends StatelessWidget {
     return ((document[s] ?? '') != '');
   }
 
-  Widget img() {
+  Widget img(context) {
     if (_exists('img')) {
-      return Image.network(
-        document['img'],
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return FullScreenPage(img: document['img']);
+          }));
+        },
+        child: Hero(
+          child: Image.network(
+            document['img'],
+          ),
+          tag: 'imageCVP',
+        )
       );
     }
     return SizedBox.shrink();
