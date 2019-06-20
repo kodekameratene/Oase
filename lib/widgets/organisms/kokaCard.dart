@@ -7,6 +7,8 @@ Widget kokaCard(
     String content =
         'Lorum ipsum dolor sit amet complesir met inet und a let nous aprenter',
     onTapAction,
+    Color colorStart = Styles.colorPrimary,
+    Color colorEnd = Styles.colorSecondary,
     String topRight = "21:30",
     Color accentColor = Styles.colorPrimary}) {
   return Padding(
@@ -16,7 +18,16 @@ Widget kokaCard(
       children: <Widget>[
         Container(
           height: 118,
-          color: accentColor,
+          decoration: new BoxDecoration(
+            gradient: new LinearGradient(
+              colors: [
+                colorStart,
+                colorEnd,
+              ],
+              begin: const FractionalOffset(1, 0),
+              end: const FractionalOffset(0, 1),
+            ),
+          ),
           width: 4,
         ),
         Expanded(
@@ -40,8 +51,7 @@ Widget kokaCard(
                     height: 128,
                     padding: EdgeInsets.all(20),
                     child: Column(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(title,

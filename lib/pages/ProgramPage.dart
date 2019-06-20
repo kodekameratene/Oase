@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/helpers/convertTimeStamp_helper.dart';
+import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/organisms/kokaCardEvent.dart';
 
@@ -11,11 +13,11 @@ import 'ContentViewerPage.dart';
 
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-//    var startTime = _convertStamp(document['startTime']);
-//    var formatterHours = new DateFormat('hh');
-//    var formatterMinutes = new DateFormat('mm');
-//    String hour = formatterHours.format(startTime).toString();
-//    String minutes = formatterMinutes.format(startTime).toString();
+    var startTime = convertStamp(document['startTime']);
+    var formatterHours = new DateFormat('hh');
+    var formatterMinutes = new DateFormat('mm');
+    String hour = formatterHours.format(startTime).toString();
+    String minutes = formatterMinutes.format(startTime).toString();
 
     List colors = [Colors.amber, Colors.red, Colors.blue, Styles.colorPrimary];
     Random random = new Random();
@@ -23,10 +25,11 @@ class ProgramPage extends StatelessWidget {
 
     return kokaCardEvent(
         title: document['title'] ?? '',
-        content: document['subtitle'] ?? '',
-//        hours: hour,
-//        minutes: minutes,
-        accentColor: colors[index],
+        content: document['content'] ?? '',
+        hours: hour,
+        minutes: minutes,
+        colorStart: mapCategoryToStartColor(document['category'].toString()),
+        colorEnd: mapCategoryToEndColor(document['category'].toString()),
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -58,19 +61,5 @@ class ProgramPage extends StatelessWidget {
         backgroundColor: Styles.colorBackgroundColorMain,
       ),
     );
-  }
-
-  /// Firestore is returning a Timestamp object, which consists of seconds and
-  /// nanoseconds. Oddly, on iOS you can just use a .toDate() and it works.
-  /// But that breaks on Android as toDate() is not a method.
-  /// So you can do a platform check if you want,
-  /// but the universal solution is to use Firestore's Timestamp:
-  /// https://stackoverflow.com/a/55226665
-  DateTime _convertStamp(Timestamp _stamp) {
-    if (_stamp != null) {
-      return Timestamp(_stamp.seconds, _stamp.nanoseconds).toDate();
-    } else {
-      return null;
-    }
   }
 }
