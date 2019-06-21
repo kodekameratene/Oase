@@ -30,9 +30,9 @@ class FullScreenPage extends StatelessWidget {
             imageProvider: NetworkImage(this.img),
           ),
         ),
-        //onHorizontalDragDown: (details) {
-        //  Navigator.pop(context);
-        //}
+        onVerticalDragEnd: (details) {
+          Navigator.pop(context);
+        },
     );
   }
 }
