@@ -14,7 +14,7 @@ import 'ContentViewerPage.dart';
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     var startTime = convertStamp(document['startTime']);
-    var formatterHours = new DateFormat('hh');
+    var formatterHours = new DateFormat('HH');
     var formatterMinutes = new DateFormat('mm');
     String hour = formatterHours.format(startTime).toString();
     String minutes = formatterMinutes.format(startTime).toString();
