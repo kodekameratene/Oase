@@ -9,12 +9,7 @@ import 'ContentViewerPage.dart';
 class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return KokaCard(
-//        title: document['title'],
-//        content: document['content'],
         document: document,
-//        short: true,
-//        colorStart: mapCategoryToStartColor(document['category'].toString()),
-//        colorEnd: mapCategoryToEndColor(document['category'].toString()),
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(
