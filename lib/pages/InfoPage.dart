@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/organisms/kokaCard.dart';
 
@@ -11,6 +12,9 @@ class InfoPage extends StatelessWidget {
     return kokaCard(
         title: document['title'],
         content: document['content'],
+        short: true,
+        colorStart: mapCategoryToStartColor(document['category'].toString()),
+        colorEnd: mapCategoryToEndColor(document['category'].toString()),
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(

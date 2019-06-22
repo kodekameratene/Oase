@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:oase/styles.dart';
 
 class FullScreenPage extends StatelessWidget {
   FullScreenPage({this.img});
