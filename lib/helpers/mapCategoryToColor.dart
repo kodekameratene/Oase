@@ -1,47 +1,57 @@
+import 'dart:ui';
+
 import 'package:oase/styles.dart';
 
-mapCategoryToStartColor(String category) {
-  switch (category) {
-    case 'mat':
-      return Styles.colorAccentCategoryFoodStart;
-      break;
-    case 'møte':
-      return Styles.colorAccentCategoryMeetingStart;
-      break;
-    case 'seminar':
-      return Styles.colorAccentCategorySeminarStart;
-      break;
-    case 'samling':
-      return Styles.colorAccentCategoryGatheringStart;
-      break;
-    case 'konsert':
-      return Styles.colorAccentCategoryConcertStart;
-      break;
-    case 'forestilling':
-      return Styles.colorAccentCategoryPerformanceStart;
-      break;
+/// Returns a color if the string have a predefined color.
+/// Note that we return after the first match.
+/// This is the strings we match on:
+/// møte, seminar, samling, konsert, forestilling, mat
+/// IF NO MATCH => Styles.colorPrimary
+Color mapCategoryToStartColor(String category) {
+  if (category.contains('møte')) {
+    return Styles.colorAccentCategoryMeetingStart;
   }
+  if (category.contains('seminar')) {
+    return Styles.colorAccentCategorySeminarStart;
+  }
+  if (category.contains('samling')) {
+    return Styles.colorAccentCategoryGatheringStart;
+  }
+  if (category.contains('konsert')) {
+    return Styles.colorAccentCategoryConcertStart;
+  }
+  if (category.contains('forestilling')) {
+    return Styles.colorAccentCategoryPerformanceStart;
+  }
+  if (category.contains('mat')) {
+    return Styles.colorAccentCategoryFoodStart;
+  }
+  return Styles.colorPrimary;
 }
 
-mapCategoryToEndColor(String category) {
-  switch (category) {
-    case 'mat':
-      return Styles.colorAccentCategoryFoodEnd;
-      break;
-    case 'møte':
-      return Styles.colorAccentCategoryMeetingEnd;
-      break;
-    case 'seminar':
-      return Styles.colorAccentCategorySeminarEnd;
-      break;
-    case 'samling':
-      return Styles.colorAccentCategoryGatheringEnd;
-      break;
-    case 'konsert':
-      return Styles.colorAccentCategoryConcertEnd;
-      break;
-    case 'forestilling':
-      return Styles.colorAccentCategoryPerformanceEnd;
-      break;
+/// Returns a color if the string have a predefined color.
+/// Note that we return after the first match.
+/// This is the strings we match on:
+/// møte, seminar, samling, konsert, forestilling, mat
+/// IF NO MATCH => Styles.colorPrimary
+Color mapCategoryToEndColor(String category) {
+  if (category.contains('møte')) {
+    return Styles.colorAccentCategoryMeetingEnd;
   }
+  if (category.contains('seminar')) {
+    return Styles.colorAccentCategorySeminarEnd;
+  }
+  if (category.contains('samling')) {
+    return Styles.colorAccentCategoryGatheringEnd;
+  }
+  if (category.contains('konsert')) {
+    return Styles.colorAccentCategoryConcertEnd;
+  }
+  if (category.contains('forestilling')) {
+    return Styles.colorAccentCategoryPerformanceEnd;
+  }
+  if (category.contains('mat')) {
+    return Styles.colorAccentCategoryFoodEnd;
+  }
+  return Styles.colorSecondary;
 }

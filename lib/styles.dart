@@ -13,28 +13,28 @@ abstract class Styles {
 
   // AccentColors for our Categories
   //  Mat
-  static var colorAccentCategoryFoodStart = Colors.greenAccent;
-  static var colorAccentCategoryFoodEnd = Colors.green;
+  static var colorAccentCategoryFoodStart =  Color(0xff6DD3CE);
+  static var colorAccentCategoryFoodEnd = Color(0xffC8E9A0);
 
   // Møte
-  static var colorAccentCategoryMeetingStart = Colors.redAccent;
-  static var colorAccentCategoryMeetingEnd = Colors.red;
+  static var colorAccentCategoryMeetingStart = Color(0xffF7A278);
+  static var colorAccentCategoryMeetingEnd = Color(0xffA13D63);
 
   // Seminar
-  static var colorAccentCategorySeminarStart = Colors.yellowAccent;
-  static var colorAccentCategorySeminarEnd = Colors.yellow;
+  static var colorAccentCategorySeminarStart = Color(0xffA13D63);
+  static var colorAccentCategorySeminarEnd = Color(0xff351E29);
 
   // Samling
-  static var colorAccentCategoryGatheringStart = Colors.deepPurpleAccent;
-  static var colorAccentCategoryGatheringEnd = Colors.deepPurple;
+  static var colorAccentCategoryGatheringStart =Color(0xffE5F4E3);
+  static var colorAccentCategoryGatheringEnd = Color(0xff5DA9E9);
 
   // Konsert
-  static var colorAccentCategoryConcertStart = Colors.black12;
-  static var colorAccentCategoryConcertEnd = Colors.black;
+  static var colorAccentCategoryConcertStart =Color(0xff5DA9E9);
+  static var colorAccentCategoryConcertEnd = Color(0xff003F91);
 
   // Forestilling
-  static var colorAccentCategoryPerformanceStart = Colors.blueAccent;
-  static var colorAccentCategoryPerformanceEnd = Colors.blue;
+  static var colorAccentCategoryPerformanceStart = Color(0xffFAF3DD);
+  static var colorAccentCategoryPerformanceEnd = Color(0xff8FC0A9);
 
   // Images
   static const imgLogoMain = "lib/assets/sommeroase.png";

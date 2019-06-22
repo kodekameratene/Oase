@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,10 +16,6 @@ class ProgramPage extends StatelessWidget {
     var formatterMinutes = new DateFormat('mm');
     String hour = formatterHours.format(startTime).toString();
     String minutes = formatterMinutes.format(startTime).toString();
-
-    List colors = [Colors.amber, Colors.red, Colors.blue, Styles.colorPrimary];
-    Random random = new Random();
-    int index = random.nextInt(colors.length);
 
     return kokaCardEvent(
         title: document['title'] ?? '',

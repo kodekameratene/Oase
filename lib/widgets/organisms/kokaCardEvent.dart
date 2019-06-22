@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:oase/styles.dart';
+import 'package:oase/widgets/atoms/ColorStrip.dart';
+import 'package:oase/widgets/atoms/TimeWidget.dart';
 
 //todo: Add support for DocumentSnapshot as param and show all fields relevant fields
 Widget kokaCardEvent({
@@ -17,19 +19,10 @@ Widget kokaCardEvent({
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          height: 62,
-          decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-              colors: [
-                colorStart,
-                colorEnd,
-              ],
-              begin: const FractionalOffset(1, 0),
-              end: const FractionalOffset(0, 1),
-            ),
-          ),
-          width: 4,
+        ColorStrip(
+          colorStart: colorStart,
+          colorEnd: colorEnd,
+          vertical: true,
         ),
         Expanded(
           child: Container(
@@ -53,19 +46,9 @@ Widget kokaCardEvent({
                       margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Row(
                         children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                "$hours",
-                                style: Styles.textEventCardTimeHours,
-                              ),
-                              Text(
-                                "$minutes",
-                                style: Styles.textEventCardTimeMinutes,
-                              ),
-                            ],
+                          TimeWidget(
+                            hours: hours,
+                            minutes: minutes,
                           ),
                           Expanded(
                             child: Container(
