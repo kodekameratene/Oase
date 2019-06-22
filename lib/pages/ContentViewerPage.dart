@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:oase/helpers/convertTimeStamp_helper.dart';
-import 'package:oase/helpers/mapCategoryToColor.dart';
+import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/fullScreenImage.dart';
-import 'package:oase/widgets/organisms/kokaCard.dart';
+import 'package:oase/widgets/organisms/KokaCard.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -14,20 +12,12 @@ class ContentViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String hours;
-    String minutes;
-    if (_exists('startTime')) {
-      var startTime = convertStamp(document['startTime']);
-      var formatterHours = new DateFormat('HH');
-      var formatterMinutes = new DateFormat('mm');
-      hours = formatterHours.format(startTime).toString();
-      minutes = formatterMinutes.format(startTime).toString();
-    }
     return Material(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
-          title: Text(document["title"]),
+          title: AssetHelpers.getAppBarImage(),
+          centerTitle: true,
         ),
         body: Center(
           child: Padding(
@@ -35,16 +25,9 @@ class ContentViewerPage extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   img(context),
-                  kokaCard(
-                    title: document['title'] ?? '',
-                    content: document['content'] ?? '',
-                    colorStart: mapCategoryToStartColor(
-                        document['category'].toString()),
-                    colorEnd:
-                        mapCategoryToEndColor(document['category'].toString()),
+                  KokaCard(
+                    document: document,
                     padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    hours: hours,
-                    minutes: minutes,
                   ),
                 ],
               )),
