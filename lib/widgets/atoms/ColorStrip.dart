@@ -39,8 +39,8 @@ class ColorStrip extends StatelessWidget {
       width: length != null ? length : null,
       decoration: new BoxDecoration(
         gradient: new LinearGradient(colors: [
-          colorEnd,
           colorStart,
+          colorEnd,
         ]),
       ),
     );
