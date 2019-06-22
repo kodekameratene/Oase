@@ -4,6 +4,7 @@ import 'package:oase/styles.dart';
 
 class FullScreenPage extends StatelessWidget {
   FullScreenPage({this.img});
+
   final String img;
 
   @override
@@ -12,10 +13,10 @@ class FullScreenPage extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.black,
           automaticallyImplyLeading: true,
-          leading: IconButton(icon:Icon(Icons.arrow_back),
-            onPressed:() => Navigator.pop(context, false),
-          )
-      ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context, false),
+          )),
       body: Center(
         child: image(context),
       ),
@@ -24,15 +25,12 @@ class FullScreenPage extends StatelessWidget {
 
   Widget image(context) {
     return GestureDetector(
-        child: Hero(
-          tag: 'imageCVP',
-          child: PhotoView(
-            imageProvider: NetworkImage(this.img),
-          ),
+      child: Hero(
+        tag: 'imageCVP',
+        child: PhotoView(
+          imageProvider: NetworkImage(this.img),
         ),
-        onVerticalDragEnd: (details) {
-          Navigator.pop(context);
-        },
+      ),
     );
   }
 }
