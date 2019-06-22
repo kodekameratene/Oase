@@ -31,10 +31,12 @@ class KokaCardEvent extends StatelessWidget {
     }
     final String title = _exists('title') ? document['title'] : '';
     final String content = _exists('content') ? document['content'] : '';
-    final Color colorStart =
-        mapCategoryToStartColor(document['category'].toString());
-    final Color colorEnd =
-        mapCategoryToEndColor(document['category'].toString());
+    final Color colorStart = _exists('category')
+        ? mapCategoryToStartColor(document['category'].toString())
+        : mapCategoryToStartColor('default');
+    final Color colorEnd = _exists('category')
+        ? mapCategoryToEndColor(document['category'].toString())
+        : mapCategoryToEndColor('default');
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
