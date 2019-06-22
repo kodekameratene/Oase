@@ -1,20 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:oase/helpers/asset_helpers.dart';
-import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
-import 'package:oase/widgets/organisms/kokaCard.dart';
+import 'package:oase/widgets/organisms/KokaCard.dart';
 
 import 'ContentViewerPage.dart';
 
 class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return kokaCard(
-        title: document['title'],
-        content: document['content'],
+    return KokaCard(
+        document: document,
         short: true,
-        colorStart: mapCategoryToStartColor(document['category'].toString()),
-        colorEnd: mapCategoryToEndColor(document['category'].toString()),
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(

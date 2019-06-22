@@ -1,29 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:oase/helpers/asset_helpers.dart';
-import 'package:oase/helpers/convertTimeStamp_helper.dart';
-import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
-import 'package:oase/widgets/organisms/kokaCardEvent.dart';
+import 'package:oase/widgets/organisms/KokaCardEvent.dart';
 
 import 'ContentViewerPage.dart';
 
 class ProgramPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    var startTime = convertStamp(document['startTime']);
-    var formatterHours = new DateFormat('HH');
-    var formatterMinutes = new DateFormat('mm');
-    String hour = formatterHours.format(startTime).toString();
-    String minutes = formatterMinutes.format(startTime).toString();
-
-    return kokaCardEvent(
-        title: document['title'] ?? '',
-        content: document['content'] ?? '',
-        hours: hour,
-        minutes: minutes,
-        colorStart: mapCategoryToStartColor(document['category'].toString()),
-        colorEnd: mapCategoryToEndColor(document['category'].toString()),
+    return KokaCardEvent(
+        document: document,
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(
