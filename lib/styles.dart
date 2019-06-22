@@ -13,7 +13,7 @@ abstract class Styles {
 
   // AccentColors for our Categories
   //  Mat
-  static var colorAccentCategoryFoodStart =  Color(0xff6DD3CE);
+  static var colorAccentCategoryFoodStart = Color(0xff6DD3CE);
   static var colorAccentCategoryFoodEnd = Color(0xffC8E9A0);
 
   // Møte
@@ -25,11 +25,11 @@ abstract class Styles {
   static var colorAccentCategorySeminarEnd = Color(0xff351E29);
 
   // Samling
-  static var colorAccentCategoryGatheringStart =Color(0xffE5F4E3);
+  static var colorAccentCategoryGatheringStart = Color(0xffE5F4E3);
   static var colorAccentCategoryGatheringEnd = Color(0xff5DA9E9);
 
   // Konsert
-  static var colorAccentCategoryConcertStart =Color(0xff5DA9E9);
+  static var colorAccentCategoryConcertStart = Color(0xff5DA9E9);
   static var colorAccentCategoryConcertEnd = Color(0xff003F91);
 
   // Forestilling
@@ -50,6 +50,12 @@ abstract class Styles {
       TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textCardContent = TextStyle(
       fontSize: 12, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
+  static var textCardTimePosted = TextStyle(
+    fontSize: 12,
+    fontFamily: "Lao Sangam MN",
+    fontWeight: FontWeight.w100,
+    color: Colors.black38,
+  );
 
   static var weatherWidgetTextTemperature = TextStyle(
       fontSize: 45,

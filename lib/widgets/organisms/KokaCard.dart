@@ -33,6 +33,12 @@ class KokaCard extends StatelessWidget {
       hours = formatterHours.format(startTime).toString();
       minutes = formatterMinutes.format(startTime).toString();
     }
+    String timePosted;
+    if (_exists('timestamp')) {
+      var timestamp = convertStamp(document['timestamp']);
+      var formatter = new DateFormat('HH:mm dd/MM/yyyy');
+      timePosted = formatter.format(timestamp).toString();
+    }
     final String title = document['title'] ?? '';
     final String content = document['content'] ?? '';
     final Color colorStart =
@@ -60,34 +66,41 @@ class KokaCard extends StatelessWidget {
                   colorStart: colorStart,
                   colorEnd: colorEnd,
                 ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      if (hours != null && minutes != null)
-                        Container(
-                          margin: EdgeInsets.only(right: 20),
-                          child: TimeWidget(
-                            hours: hours,
-                            minutes: minutes,
+                Stack(
+                  children: <Widget>[
+                    Align(
+                        alignment: Alignment(1, -1),
+                        child: TimePostedField(timePosted: timePosted)),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          if (hours != null && minutes != null)
+                            Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: TimeWidget(
+                                hours: hours,
+                                minutes: minutes,
+                              ),
+                            ),
+                          Flexible(
+                            child: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  _title(title, short),
+                                  _content(content, short),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      Flexible(
-                        child: Padding(
-                          padding: EdgeInsets.all(4),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              _title(title, short),
-                              _content(content, short),
-                            ],
-                          ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -103,6 +116,26 @@ class KokaCard extends StatelessWidget {
   /// and False if not.
   _exists(String s) {
     return ((document[s] ?? '') != '');
+  }
+}
+
+class TimePostedField extends StatelessWidget {
+  const TimePostedField({
+    Key key,
+    @required this.timePosted,
+  }) : super(key: key);
+
+  final String timePosted;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Text(
+        timePosted,
+        style: Styles.textCardTimePosted,
+      ),
+    );
   }
 }
 
