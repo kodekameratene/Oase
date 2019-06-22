@@ -11,12 +11,9 @@ class FullScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.black,
-          automaticallyImplyLeading: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context, false),
-          )),
+        backgroundColor: Colors.black,
+        automaticallyImplyLeading: true,
+      ),
       body: Center(
         child: image(context),
       ),
