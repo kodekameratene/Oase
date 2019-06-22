@@ -10,6 +10,7 @@ class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return KokaCard(
         document: document,
+        short: true,
         onTapAction: () => Navigator.push(
             context,
             MaterialPageRoute(
