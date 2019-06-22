@@ -10,7 +10,10 @@ Widget kokaCard(
     Color colorStart = Styles.colorPrimary,
     Color colorEnd = Styles.colorSecondary,
     String topRight = "21:30",
-    Color accentColor = Styles.colorPrimary}) {
+    Color accentColor = Styles.colorPrimary,
+    int maxLinesContent = 2,
+    String date,
+    }) {
   return Padding(
     padding: const EdgeInsets.all(10),
     child: Row(
@@ -48,7 +51,7 @@ Widget kokaCard(
               child: InkWell(
                   splashColor: Styles.colorPrimary,
                   child: Container(
-                    height: 128,
+
                     padding: EdgeInsets.all(20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -60,7 +63,7 @@ Widget kokaCard(
                             style: Styles.kokaCardNewsTextHeader),
                         Text(content,
                             overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                            maxLines: maxLinesContent,
                             softWrap: true,
                             style: Styles.kokaCardNewsTextContent),
                       ],

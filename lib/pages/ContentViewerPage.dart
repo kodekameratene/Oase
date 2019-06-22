@@ -18,8 +18,12 @@ class ContentViewerPage extends StatelessWidget {
     var startTime = convertStamp(document['startTime']);
     var formatterHours = new DateFormat('HH');
     var formatterMinutes = new DateFormat('mm');
-    String hour = formatterHours.format(startTime).toString();
-    String minutes = formatterMinutes.format(startTime).toString();
+    String hour;
+    String minutes;
+    if (_exists('startTime')) {
+      hour = formatterHours.format(startTime).toString();
+      minutes = formatterMinutes.format(startTime).toString();
+    }
     return Material(
       child: Scaffold(
         appBar: AppBar(
@@ -31,16 +35,17 @@ class ContentViewerPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  kokaCardEvent(
-                    title: document['title'] ?? '',
-                    content: document['content'] ?? '',
-                    hours: hour,
-                    minutes: minutes,
-                    colorStart: mapCategoryToStartColor(
-                        document['category'].toString()),
-                    colorEnd:
-                        mapCategoryToEndColor(document['category'].toString()),
-                  ),
+                  if (_exists("title") && _exists("content") && _exists('startTime'))
+                    kokaCardEvent(
+                      title: document['title'] ?? '',
+                      content: document['content'] ?? '',
+                      hours: hour,
+                      minutes: minutes,
+                      colorStart: mapCategoryToStartColor(
+                          document['category'].toString()),
+                      colorEnd:
+                          mapCategoryToEndColor(document['category'].toString()),
+                    ),
                   img(context),
                   kokaCard(
                     title: document['title'] ?? '',
@@ -49,6 +54,7 @@ class ContentViewerPage extends StatelessWidget {
                         document['category'].toString()),
                     colorEnd:
                         mapCategoryToEndColor(document['category'].toString()),
+                    maxLinesContent: 100,
                   ),
                 ],
               )),
