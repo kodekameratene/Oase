@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:oase/styles.dart';
+import 'package:oase/helpers/convertTimeStamp_helper.dart';
 
 Widget kokaCard(
     {String title = "hello",
@@ -12,7 +13,7 @@ Widget kokaCard(
     String topRight = "21:30",
     Color accentColor = Styles.colorPrimary,
     int maxLinesContent = 2,
-    String date,
+    var date,
     }) {
   return Padding(
     padding: const EdgeInsets.all(10),
@@ -20,7 +21,7 @@ Widget kokaCard(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          height: 118,
+          height: 95,
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
               colors: [
