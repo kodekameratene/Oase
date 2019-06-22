@@ -6,6 +6,7 @@ import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/organisms/kokaCard.dart';
 import 'package:oase/widgets/organisms/kokaCardEvent.dart';
+import 'package:oase/widgets/molecules/fullScreenImage.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -37,10 +38,10 @@ class ContentViewerPage extends StatelessWidget {
                     minutes: minutes,
                     colorStart: mapCategoryToStartColor(
                         document['category'].toString()),
-                    colorEnd: mapCategoryToEndColor(
-                        document['category'].toString()),
+                    colorEnd:
+                        mapCategoryToEndColor(document['category'].toString()),
                   ),
-                  img(),
+                  img(context),
                   kokaCard(
                     title: document['title'] ?? '',
                     content: document['content'] ?? '',
@@ -63,26 +64,21 @@ class ContentViewerPage extends StatelessWidget {
     List<Widget> widgetList = [
       if (_exists("title") && _exists("content"))
         kokaCardEvent(title: document['title'], content: document['content']),
-      if (_exists("content"))
-        Text(document["content"]),
-      if (_exists("location"))
-        Text(document["location"]),
+      if (_exists("content")) Text(document["content"]),
+      if (_exists("location")) Text(document["location"]),
       if (_exists("img"))
-        img(),
+        //img(context),
 //      if (_exists("startTime"))
 //        Text((document["startTime"] as Timestamp).toDate().toIso8601String()),
 //      if (_exists("endTime"))
 //        Text((document["endTime"] as Timestamp).toDate().toIso8601String()),
 //      if (_exists("timestamp"))
 //        Text((document["timestamp"] as Timestamp).toDate().toIso8601String()),
-      if (_exists("url"))
-        Text(document["url"]),
-      if (_exists("category"))
-        Text(document["category"].toString()),
-      if (_exists("track"))
-        Text(document["track"].toString()),
-      if (_exists("linkedContent"))
-        Text(document["linkedContent"].toString()),
+        if (_exists("url"))
+          Text(document["url"]),
+      if (_exists("category")) Text(document["category"].toString()),
+      if (_exists("track")) Text(document["track"].toString()),
+      if (_exists("linkedContent")) Text(document["linkedContent"].toString()),
     ];
 
     return List<Widget>.generate(widgetList.length, (int index) {
@@ -98,11 +94,20 @@ class ContentViewerPage extends StatelessWidget {
     return ((document[s] ?? '') != '');
   }
 
-  Widget img() {
+  Widget img(context) {
     if (_exists('img')) {
-      return Image.network(
-        document['img'],
-      );
+      return GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return FullScreenPage(img: document['img']);
+            }));
+          },
+          child: Hero(
+            child: Image.network(
+              document['img'],
+            ),
+            tag: 'imageCVP',
+          ));
     }
     return SizedBox.shrink();
   }
