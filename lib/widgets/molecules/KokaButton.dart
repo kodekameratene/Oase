@@ -22,8 +22,15 @@ Can launch urls or your own provided onTap method.
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      decoration: new BoxDecoration(boxShadow: [
+        new BoxShadow(
+          color: Styles.colorShadowCardMain,
+          blurRadius: 10,
+          offset: Offset(0, 4),
+        ),
+      ]),
+      padding: EdgeInsets.all(10),
       child: Material(
         color: color ?? Styles.colorPrimary,
         child: InkWell(

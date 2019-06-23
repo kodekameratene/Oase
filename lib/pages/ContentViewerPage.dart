@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/styles.dart';
+import 'package:oase/widgets/molecules/KokaButton.dart';
 import 'package:oase/widgets/molecules/fullScreenImage.dart';
 import 'package:oase/widgets/organisms/KokaCard.dart';
 
@@ -27,8 +28,15 @@ class ContentViewerPage extends StatelessWidget {
                   img(context),
                   KokaCard(
                     document: document,
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    padding: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                    ),
                   ),
+                  if (_exists('url'))
+                    KokaButton(
+                      url: document['url'],
+                    ),
                 ],
               )),
         ),
