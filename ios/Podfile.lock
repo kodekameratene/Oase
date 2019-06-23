@@ -132,7 +132,7 @@ DEPENDENCIES:
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -165,9 +165,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  cloud_firestore: cd6e849ecb8ab43e5a7a5f1f169304ca65436c03
+  cloud_firestore: 980813a98d8beb5c321b589845fabf6c4c5bd571
   Firebase: 5965bac23e7fcb5fa6d926ed429c9ecef8a2014e
-  firebase_core: ce5006bb48508ee4e71e0f429a3f519bb8ee2961
+  firebase_core: c96aa8b2fcf7f5167d32f22034f502f9304952b8
   FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
   FirebaseAuth: 80879f0e9f2c5f40686d5b42f6ccb3cd5dce78ea
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -175,7 +175,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: f48e067716864be2b855cf716b927ef375d6cfa0
   FirebaseFirestore: d9c55dfd0cd648f420cc8340c4940dc3eab2d860
   FirebaseInstanceID: cdb3827746d53ece7ae87a5c51c25c3055443366
-  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
@@ -183,10 +183,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  package_info: 78cabb3c322943c55d39676f4a5bfc748c01d055
+  package_info: d7c98b64f60add4c2908b9d94d82a45d3c8827ad
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
-  url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
+  url_launcher: 92b89c1029a0373879933c21642958c874539095
 
 PODFILE CHECKSUM: e8988baac3a50f787b9d3ed7ca44957b442f92a7
 
-COCOAPODS: 1.7.0
+COCOAPODS: 1.5.0
