@@ -23,7 +23,7 @@ Can launch urls or your own provided onTap method.
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10),
       child: Material(
         color: color ?? Styles.colorPrimary,
         child: InkWell(
