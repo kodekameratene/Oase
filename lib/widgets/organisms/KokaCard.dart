@@ -12,7 +12,7 @@ class KokaCard extends StatelessWidget {
   const KokaCard({
     Key key,
     this.document,
-    this.padding = const EdgeInsets.all(20),
+    this.padding = const EdgeInsets.all(10),
     this.onTapAction,
     this.short = false,
   }) : super(key: key);
@@ -132,11 +132,11 @@ class TimePostedField extends StatelessWidget {
     if (timePosted != null) {
       return Padding(
         padding: const EdgeInsets.all(20),
-        child: Text(
-          timePosted,
-          style: Styles.textCardTimePosted,
-        ),
-      );
+          child: Text(
+            timePosted,
+            style: Styles.textCardTimePosted,
+          ),
+        );
     }
     return SizedBox.shrink();
   }
