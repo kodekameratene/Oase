@@ -132,11 +132,11 @@ class TimePostedField extends StatelessWidget {
     if (timePosted != null) {
       return Padding(
         padding: const EdgeInsets.all(20),
-          child: Text(
-            timePosted,
-            style: Styles.textCardTimePosted,
-          ),
-        );
+        child: Text(
+          timePosted,
+          style: Styles.textCardTimePosted,
+        ),
+      );
     }
     return SizedBox.shrink();
   }
