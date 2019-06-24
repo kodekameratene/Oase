@@ -20,13 +20,8 @@ class FullScreenPage extends StatelessWidget {
   }
 
   Widget image(context) {
-    return GestureDetector(
-      child: Hero(
-        tag: 'imageCVP',
-        child: PhotoView(
-          imageProvider: NetworkImage(this.img),
-        ),
-      ),
+    return PhotoView(heroTag: 'imageCVP',
+      imageProvider: NetworkImage(this.img),
     );
   }
 }

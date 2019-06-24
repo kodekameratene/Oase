@@ -62,9 +62,12 @@ class ContentViewerPage extends StatelessWidget {
           },
           child: Container(
             padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-            child: Image.network(
-              document['img'],
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: 'imageCVP',
+              child: Image.network(
+                document['img'],
+                fit: BoxFit.cover,
+              ),
             ),
           ));
     }
