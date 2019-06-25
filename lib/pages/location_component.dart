@@ -1,6 +1,6 @@
-import 'package:Oase/assets/mock_data/ContentPost.dart';
-import 'package:Oase/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/assets/mock_data/ContentPost.dart';
+import 'package:oase/styles.dart';
 
 class LocationSelectPage extends StatelessWidget {
   final List<Location> _locations = locations;

@@ -1,40 +1,24 @@
-import 'dart:math';
-
-import 'package:Oase/helpers/asset_helpers.dart';
-import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCardEvent.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/painting.dart';
+import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/organisms/KokaCardEvent.dart';
 
-class ProgramPage extends StatelessWidget {
-  Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    var startTime = _convertStamp(document['startTime']);
-    var formatterHours = new DateFormat('hh');
-    var formatterMinutes = new DateFormat('mm');
-    String hour = formatterHours.format(startTime).toString();
-    String minutes = formatterMinutes.format(startTime).toString();
+import 'ContentViewerPage.dart';
+import 'package:oase/widgets/organisms/DayButton.dart';
+import 'package:oase/widgets/molecules/WeekWidget.dart';
+import 'package:oase/helpers/date_helper.dart';
 
+class ProgramPage extends StatefulWidget {
+  @override
+  _ProgramPageState createState() => _ProgramPageState();
+}
 
-    List colors = [
-      Colors.amber,
-      Colors.red,
-      Colors.blue,
-      Styles.colorPrimary
-    ];
-    Random random = new Random();
-    int index = random.nextInt(colors.length);
-
-
-    return kokaCardEvent(
-      title: document['title'] ?? '',
-      content: document['subtitle'] ?? '',
-      onTapAction: () {},
-      hours: hour,
-      minutes: minutes,
-      accentColor: colors[index],
-    );
-  }
+class _ProgramPageState extends State<ProgramPage> {
+  List<DayButton> list = new List<DayButton>();
+  List<String> days = new List<String>();
+  List<String> daySeperators = new List<String>();
 
   Widget build(context) {
     return Material(
@@ -44,36 +28,102 @@ class ProgramPage extends StatelessWidget {
           title: AssetHelpers.getAppBarImage(),
           centerTitle: true,
         ),
-        body: StreamBuilder(
-            stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
-                .where("category", isEqualTo: 'event')
-                .orderBy("startTime")
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData)
-                return Center(child: Text("Laster inn data..."));
-              return ListView.builder(
-                  itemCount: snapshot.data.documents.length,
-                  itemBuilder: (context, index) =>
-                      _buildListItem(context, snapshot.data.documents[index]));
-            }),
+        body: Column(
+          children: <Widget>[
+            // Container(height: 60, child: dayButtonList()),
+            Flexible(
+              child: programList(),
+            ),
+          ],
+        ),
         backgroundColor: Styles.colorBackgroundColorMain,
       ),
     );
   }
 
-  /// Firestore is returning a Timestamp object, which consists of seconds and
-  /// nanoseconds. Oddly, on iOS you can just use a .toDate() and it works.
-  /// But that breaks on Android as toDate() is not a method.
-  /// So you can do a platform check if you want,
-  /// but the universal solution is to use Firestore's Timestamp:
-  /// https://stackoverflow.com/a/55226665
-  DateTime _convertStamp(Timestamp _stamp) {
-    if (_stamp != null) {
-      return Timestamp(_stamp.seconds, _stamp.nanoseconds).toDate();
-    } else {
-      return null;
+  Widget _buildProgramListItem(
+      BuildContext context, DocumentSnapshot document) {
+    String dayNumberFromTimestamp =
+        getDayNumberFromTimestamp(document["startTime"]);
+    bool shouldShowNewDayLabel = false;
+    if (!days.contains(dayNumberFromTimestamp)) {
+      days.add(dayNumberFromTimestamp);
+      shouldShowNewDayLabel = true;
     }
+    String dayName = getFullDayFromTimestamp(document["startTime"]);
+    return (Column(
+      children: <Widget>[
+        if (shouldShowNewDayLabel)
+          Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Text(
+              dayName,
+              style: Styles.textEventCardHeader,
+            ),
+          ),
+        KokaCardEvent(
+            document: document,
+            onTapAction: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ContentViewerPage(document)),
+                ))
+      ],
+    ));
   }
+
+  Widget programList() {
+     return (StreamBuilder(
+        stream: Firestore.instance
+        .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
+        .where("page", arrayContains: 'program')
+        .orderBy("startTime")
+        .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData)
+            return Center(
+                child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("Laster inn data...")));
+          days = [];
+          daySeperators = new List<String>();
+          return ListView.builder(
+              itemCount: snapshot.data.documents.length,
+              itemBuilder: (context, index) {
+                return _buildProgramListItem(
+                    context, snapshot.data.documents[index]);
+              });
+        }));
+  }
+
+
+  // Widget _buildButtonListItem(BuildContext context, DocumentSnapshot document) {
+  //   // watch_your_profanity
+  //   return DayButton(
+  //       date: getDayNumberFromTimestamp(document['startTime']),
+  //       day: getDayFromTimestamp(document["startTime"]));
+  // }
+
+  // Widget dayButtonList() {
+  //   return (StreamBuilder(
+  //       stream: instance,
+  //       builder: (context, snapshot) {
+  //         if (!snapshot.hasData)
+  //           return Center(child: Text("Laster inn data..."));
+  //         days = [];
+  //         return ListView.builder(
+  //             scrollDirection: Axis.horizontal,
+  //             itemCount: snapshot.data.documents.length,
+  //             itemBuilder: (context, index) {
+  //               String dayNumberFromTimestamp = getDayNumberFromTimestamp(
+  //                   snapshot.data.documents[index]["startTime"]);
+  //               if (!days.contains(dayNumberFromTimestamp)) {
+  //                 days.add(dayNumberFromTimestamp);
+  //                 return _buildButtonListItem(
+  //                     context, snapshot.data.documents[index]);
+  //               }
+  //               return SizedBox.shrink();
+  //             });
+  //       }));
+  // }
 }

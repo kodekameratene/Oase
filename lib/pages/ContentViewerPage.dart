@@ -1,11 +1,15 @@
-import 'package:Oase/assets/mock_data/ContentPost.dart';
-import 'package:Oase/styles.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/molecules/KokaButton.dart';
+import 'package:oase/widgets/molecules/fullScreenImage.dart';
+import 'package:oase/widgets/organisms/KokaCard.dart';
 
 class ContentViewerPage extends StatelessWidget {
-  ContentViewerPage(this.contentPost);
+  ContentViewerPage(this.document);
 
-  final ContentPost contentPost;
+  final DocumentSnapshot document;
 
   @override
   Widget build(BuildContext context) {
@@ -13,59 +17,59 @@ class ContentViewerPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Styles.colorPrimary,
-          title: Text(contentPost.title),
+          title: AssetHelpers.getAppBarImage(),
+          centerTitle: true,
         ),
         body: Center(
-          child: Container(
-            child: ListView(children: <Widget>[
-              content(),
-              img(),
-              startTime(),
-              endTime(),
-              number(),
-              url(),
-              location(),
-              showCategories(),
-            ]),
-          ),
+          child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView(
+                children: <Widget>[
+                  img(context),
+                  KokaCard(
+                    document: document,
+                    padding: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                    ),
+                  ),
+                  if (_exists('url'))
+                    KokaButton(
+                      url: document['url'],
+                    ),
+                ],
+              )),
         ),
       ),
     );
   }
 
-  Widget content() {
-    return Text(contentPost.content);
+  /// Checks if the document have a field
+  /// that matches the provided string.
+  /// Returns True if the string does exist,
+  /// and False if not.
+  _exists(String s) {
+    return ((document[s] ?? '') != '');
   }
 
-  Widget img() {
-    return Image.network(
-      contentPost.img,
-      height: 100,
-      width: 100,
+  Widget img(context) {
+    if (_exists('img')) {
+      return GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return FullScreenPage(img: document['img']);
+            }));
+          },
+          child: Container(
+            padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
+            child: Image.network(
+              document['img'],
+              fit: BoxFit.cover,
+            ),
+          ));
+    }
+    return Container(
+      height: 10,
     );
-  }
-
-  Widget startTime() {
-    return Text(contentPost.startTime.toString());
-  }
-
-  Widget endTime() {
-    return Text(contentPost.endTime.toString());
-  }
-
-  Widget number() {
-    return Text(contentPost.number.toString());
-  }
-
-  Widget url() {
-    return Text(contentPost.url.toString());
-  }
-
-  Widget location() {
-    return Text(contentPost.location.toString());
-  }
-
-  Widget showCategories() {
-    return Text(contentPost.showCategories.toString());
   }
 }

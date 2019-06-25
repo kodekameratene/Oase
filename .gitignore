@@ -425,3 +425,5 @@ fabric.properties
 
 ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 .idea
+
+ios/Runner\.xcodeproj/project\.pbxproj

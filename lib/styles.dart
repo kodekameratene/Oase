@@ -11,6 +11,30 @@ abstract class Styles {
   static const colorWeatherSunColor = Color.fromRGBO(255, 216, 0, 1);
   static var colorShadowCardMain = Color.fromRGBO(0, 0, 0, 0.06);
 
+  // AccentColors for our Categories
+  //  Mat
+  static var colorAccentCategoryFoodStart = Color(0xff6DD3CE);
+  static var colorAccentCategoryFoodEnd = Color(0xffC8E9A0);
+
+  // Møte
+  static var colorAccentCategoryMeetingStart = Color(0xffF7A278);
+  static var colorAccentCategoryMeetingEnd = Color(0xffA13D63);
+
+  // Seminar
+  static var colorAccentCategorySeminarStart = Color(0xffA13D63);
+  static var colorAccentCategorySeminarEnd = Color(0xff351E29);
+
+  // Samling
+  static var colorAccentCategoryGatheringStart = Color(0xffE5F4E3);
+  static var colorAccentCategoryGatheringEnd = Color(0xff5DA9E9);
+
+  // Konsert
+  static var colorAccentCategoryConcertStart = Color(0xff5DA9E9);
+  static var colorAccentCategoryConcertEnd = Color(0xff003F91);
+
+  // Forestilling
+  static var colorAccentCategoryPerformanceStart = Color(0xffFAF3DD);
+  static var colorAccentCategoryPerformanceEnd = Color(0xff8FC0A9);
 
   // Images
   static const imgLogoMain = "lib/assets/sommeroase.png";
@@ -26,6 +50,12 @@ abstract class Styles {
       TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textCardContent = TextStyle(
       fontSize: 12, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
+  static var textCardTimePosted = TextStyle(
+    fontSize: 12,
+    fontFamily: "Lao Sangam MN",
+    fontWeight: FontWeight.w100,
+    color: Colors.black38,
+  );
 
   static var weatherWidgetTextTemperature = TextStyle(
       fontSize: 45,
@@ -35,31 +65,22 @@ abstract class Styles {
   static var weatherWidgetTextLocation =
       TextStyle(fontSize: 17, color: Styles.colorWeatherTextColor);
 
-
   static var kokaEventCardColorBackground = Color.fromRGBO(253, 253, 253, 1);
   static var textEventCardHeader =
-  TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
   static var textEventCardContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
 
-  static var textEventCardTimeHours = TextStyle(
-      fontFamily: "Didot",
-      fontSize: 20,
-      fontWeight: FontWeight.bold);
+  static var textEventCardTimeHours =
+      TextStyle(fontFamily: "Didot", fontSize: 20, fontWeight: FontWeight.bold);
   static var textEventCardTimeMinutes = TextStyle(
-      fontFamily: "Didot",
-      fontSize: 18,
-      fontWeight: FontWeight.normal);
+      fontFamily: "Didot", fontSize: 18, fontWeight: FontWeight.normal);
 
-
-  static var kokaCardNewsTextHeader
-  = TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
-  static var kokaCardNewsTextContent
-  = TextStyle(
+  static var kokaCardNewsTextHeader =
+      TextStyle(fontSize: 20, fontFamily: "Lato", fontWeight: FontWeight.bold);
+  static var kokaCardNewsTextContent = TextStyle(
       fontSize: 18, fontFamily: "Lao Sangam MN", fontWeight: FontWeight.normal);
 
-  static var kokaCardNewsTextTopRight = TextStyle(
-      color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
-
-
+  static var kokaCardNewsTextTopRight =
+      TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
 }

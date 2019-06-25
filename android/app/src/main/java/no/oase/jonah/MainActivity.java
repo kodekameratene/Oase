@@ -1,4 +1,4 @@
-package no.kodekameratene.jonah;
+package no.oase.jonah;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

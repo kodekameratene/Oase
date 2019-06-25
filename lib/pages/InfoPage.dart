@@ -1,14 +1,20 @@
-import 'package:Oase/helpers/asset_helpers.dart';
-import 'package:Oase/styles.dart';
-import 'package:Oase/widgets/organisms/kokaCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/asset_helpers.dart';
+import 'package:oase/styles.dart';
+import 'package:oase/widgets/organisms/KokaCard.dart';
+
+import 'ContentViewerPage.dart';
 
 class InfoPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return kokaCard(
-        title: document['title'],
-        content: document['content']);
+    return KokaCard(
+        document: document,
+        short: true,
+        onTapAction: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ContentViewerPage(document))));
   }
 
   Widget build(context) {
@@ -21,8 +27,9 @@ class InfoPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('Oase/rxpaqIfAPlWWK2D1SbRI/content')
-                .where("category", isEqualTo: 'info')
+                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
+                .where("page", arrayContains: 'info')
+                .orderBy("index")
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData)
