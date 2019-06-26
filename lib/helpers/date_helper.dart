@@ -6,7 +6,7 @@ String getWeekdayDateMonth(Timestamp timestamp) {
   String weekday = getFullDayFromTimestamp(timestamp);
   String date = getDayNumberFromTimestamp(timestamp);
   String month = getMonthFromTimestamp(timestamp);
-  return convertToWeekdayDateMonthFormat(weekday, date, month);
+  return weekday + " " + date + ". " + month;
 }
 
 String getDayFromTimestamp(Timestamp timestamp) {
@@ -102,9 +102,4 @@ String translateEnglishMonthToNorwegianString(String month) {
       return 'Desember';
   }
   return month;
-}
-
-String convertToWeekdayDateMonthFormat(
-    String weekday, String date, String month) {
-  return weekday + " " + date + ". " + month;
 }
