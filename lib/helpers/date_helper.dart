@@ -99,7 +99,7 @@ String translateEnglishMonthToNorwegianString(String month) {
     case 'July':
       return 'Juli';
     case 'October':
-      return 'October';
+      return 'Oktober';
     case 'December':
       return 'Desember';
   }
