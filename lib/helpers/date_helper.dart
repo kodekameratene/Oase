@@ -6,7 +6,7 @@ String getWeekdayDateMonth(Timestamp timestamp) {
   String weekday = getFullDayFromTimestamp(timestamp);
   String date = getDayNumberFromTimestamp(timestamp);
   String month = getMonthFromTimestamp(timestamp);
-  return weekday + " " + date + ". " + month;
+  return "$weekday $date. $month";
 }
 
 String getDayFromTimestamp(Timestamp timestamp) {
