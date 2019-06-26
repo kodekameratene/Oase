@@ -81,7 +81,7 @@ String translateEnglishDayNameToNorwegianString(String day) {
     case 'Sunday':
       return 'Søndag';
   }
-  return '';
+  return day;
 }
 
 String translateEnglishMonthToNorwegianString(String month) {
@@ -90,6 +90,8 @@ String translateEnglishMonthToNorwegianString(String month) {
       return 'Januar';
     case 'February':
       return 'Februar';
+    case 'March':
+      return 'Mars';
     case 'May':
       return 'Mai';
     case 'June':
