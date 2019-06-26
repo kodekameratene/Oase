@@ -31,7 +31,8 @@ String getDayNumberFromTimestamp(Timestamp timestamp) {
 String getMonthFromTimestamp(Timestamp timestamp) {
   var ts = convertStamp(timestamp);
   var formatter = new DateFormat('MMMM');
-  return translateEnglishMonthToNorwegianString(formatter.format(ts).toString());
+  return translateEnglishMonthToNorwegianString(
+      formatter.format(ts).toString());
 }
 
 String getNorwegianWeekDayName(String weekday) {
@@ -103,6 +104,7 @@ String translateEnglishMonthToNorwegianString(String month) {
   return month;
 }
 
-String convertToWeekdayDateMonthFormat(String weekday, String date, String month) {
+String convertToWeekdayDateMonthFormat(
+    String weekday, String date, String month) {
   return weekday + " " + date + ". " + month;
 }
