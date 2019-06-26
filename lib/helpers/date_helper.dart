@@ -2,6 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'convertTimeStamp_helper.dart';
 
+String getWeekdayDateMonth(Timestamp timestamp) {
+  String weekday = getFullDayFromTimestamp(timestamp);
+  String date = getDayNumberFromTimestamp(timestamp);
+  String month = getMonthFromTimestamp(timestamp);
+  return "$weekday $date. $month";
+}
+
 String getDayFromTimestamp(Timestamp timestamp) {
   var ts = convertStamp(timestamp);
   var formatter = new DateFormat('E');
@@ -19,6 +26,13 @@ String getDayNumberFromTimestamp(Timestamp timestamp) {
   var ts = convertStamp(timestamp);
   var formatter = new DateFormat('d');
   return formatter.format(ts).toString();
+}
+
+String getMonthFromTimestamp(Timestamp timestamp) {
+  var ts = convertStamp(timestamp);
+  var formatter = new DateFormat('MMMM');
+  return translateEnglishMonthToNorwegianString(
+      formatter.format(ts).toString());
 }
 
 String getNorwegianWeekDayName(String weekday) {
@@ -67,5 +81,27 @@ String translateEnglishDayNameToNorwegianString(String day) {
     case 'Sunday':
       return 'Søndag';
   }
-  return '';
+  return day;
+}
+
+String translateEnglishMonthToNorwegianString(String month) {
+  switch (month) {
+    case 'January':
+      return 'Januar';
+    case 'February':
+      return 'Februar';
+    case 'March':
+      return 'Mars';
+    case 'May':
+      return 'Mai';
+    case 'June':
+      return 'Juni';
+    case 'July':
+      return 'Juli';
+    case 'October':
+      return 'Oktober';
+    case 'December':
+      return 'Desember';
+  }
+  return month;
 }

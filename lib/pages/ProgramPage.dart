@@ -42,7 +42,7 @@ class _ProgramPageState extends State<ProgramPage> {
 
   Widget _buildProgramListItem(
       BuildContext context, DocumentSnapshot document, shouldShowNewDayLabel) {
-    String dayName = getFullDayFromTimestamp(document["startTime"]);
+    String dayName = getWeekdayDateMonth(document["startTime"]);
     return (Column(
       children: <Widget>[
         if (shouldShowNewDayLabel)
