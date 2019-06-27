@@ -7,6 +7,7 @@ import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/atoms/ColorStrip.dart';
 import 'package:oase/widgets/atoms/TimeWidget.dart';
+import 'package:oase/helpers/date_helper.dart';
 
 class KokaCardInfo extends StatelessWidget {
   const KokaCardInfo({
@@ -26,13 +27,19 @@ class KokaCardInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     String hours;
     String minutes;
+    String weekdayDateMonth = '';
+    String date = '';
+    String location = '';
     if (_exists('startTime')) {
+      weekdayDateMonth = getWeekdayDateMonth(document['startTime'] ?? '');
+      date = getDateFromTimestamp(document['startTime'] ?? '');
       var startTime = convertStamp(document['startTime']);
       var formatterHours = new DateFormat('HH');
       var formatterMinutes = new DateFormat('mm');
       hours = formatterHours.format(startTime).toString();
       minutes = formatterMinutes.format(startTime).toString();
     }
+    if (_exists('location')) location = document['location'];
     String hoursEnd;
     String minutesEnd;
     if (_exists('endTime')) {
@@ -48,12 +55,12 @@ class KokaCardInfo extends StatelessWidget {
       var formatter = new DateFormat('HH:mm dd/MM/yyyy');
       timePosted = formatter.format(timestamp).toString();
     }
-    final String title = document['title'] ?? '';
-    final String content = document['content'] ?? '';
-    final Color colorStart =
-        mapCategoryToStartColor(document['category'].toString());
-    final Color colorEnd =
-        mapCategoryToEndColor(document['category'].toString());
+    Color colorStart;
+    Color colorEnd;
+    if (_exists('category')) {
+      colorStart = mapCategoryToStartColor(document['category'].toString());
+      colorEnd = mapCategoryToEndColor(document['category'].toString());
+    }
     return Padding(
       padding: padding,
       child: Container(
@@ -100,14 +107,24 @@ class KokaCardInfo extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    _title(title, short),
-                                    _content(content, short),
+                                    Column(
+                                      children: <Widget>[
+                                        _title(weekdayDateMonth, short),
+                                        ColorStrip(
+                                          colorStart: Colors.black,
+                                          colorEnd: Colors.black,
+                                          thickness: 0.3,
+                                          length: 130,
+                                        ),
+                                        _content(location, short),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(right: 20),
+                              margin: EdgeInsets.only(left: 20),
                               child: TimeWidget(
                                 hours: hoursEnd,
                                 minutes: minutesEnd,

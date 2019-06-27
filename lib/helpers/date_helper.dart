@@ -9,6 +9,12 @@ String getWeekdayDateMonth(Timestamp timestamp) {
   return "$weekday $date. $month";
 }
 
+String getDateFromTimestamp(Timestamp timestamp) {
+  String date = getDayNumberFromTimestamp(timestamp);
+  String month = getMonthFromTimestamp(timestamp);
+  return "$date. $month";
+}
+
 String getDayFromTimestamp(Timestamp timestamp) {
   var ts = convertStamp(timestamp);
   var formatter = new DateFormat('E');

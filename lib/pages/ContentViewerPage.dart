@@ -25,6 +25,9 @@ class ContentViewerPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView(
                 children: <Widget>[
+                  if (_exists('title')) _title(document['title'], false),
+                  if (_exists('subtitle'))
+                    _subtitle(document['subtitle'], false),
                   img(context),
                   KokaCardInfo(
                     document: document,
@@ -50,6 +53,28 @@ class ContentViewerPage extends StatelessWidget {
   /// and False if not.
   _exists(String s) {
     return ((document[s] ?? '') != '');
+  }
+
+  Text _title(String title, bool short) {
+    if (short) {
+      return Text(title,
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Styles.kokaCardNewsTextHeader);
+    }
+    return Text(title, style: Styles.kokaCardNewsTextHeader);
+  }
+
+  Text _subtitle(String subtitle, bool short) {
+    if (short) {
+      return Text(subtitle,
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Styles.kokaCardNewsTextContent);
+    }
+    return Text(subtitle, style: Styles.kokaCardNewsTextContent);
   }
 
   Widget img(context) {
