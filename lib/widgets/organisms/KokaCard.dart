@@ -154,11 +154,15 @@ Text _title(String title, bool short) {
 
 Text _content(String content, bool short) {
   if (short) {
-    return Text(content,
-        overflow: TextOverflow.ellipsis,
+    return Text(formatText(content),
         maxLines: 2,
         softWrap: true,
+        overflow: TextOverflow.ellipsis,
         style: Styles.kokaCardNewsTextContent);
   }
-  return Text(content, style: Styles.kokaCardNewsTextContent);
+  return Text(formatText(content), style: Styles.kokaCardNewsTextContent);
+}
+
+String formatText(String content) {
+  return content.replaceAll("\\n", "\n");
 }
