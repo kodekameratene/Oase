@@ -6,8 +6,10 @@ import 'package:oase/helpers/convertTimeStamp_helper.dart';
 import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/atoms/ColorStrip.dart';
-import 'package:oase/widgets/atoms/TimeWidget.dart';
+import 'package:oase/widgets/molecules/TimeWithTextWidget.dart';
 import 'package:oase/helpers/date_helper.dart';
+import 'package:oase/widgets/atoms/TitleWidget.dart';
+import 'package:flutter/cupertino.dart';
 
 class KokaCardInfo extends StatelessWidget {
   const KokaCardInfo({
@@ -91,12 +93,13 @@ class KokaCardInfo extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             if (hours != null && minutes != null)
                               Container(
                                 margin: EdgeInsets.only(right: 20),
-                                child: TimeWidget(
+                                child: TimeWithTextWidget(
+                                  text: "Fra: ",
                                   hours: hours,
                                   minutes: minutes,
                                 ),
@@ -109,14 +112,21 @@ class KokaCardInfo extends StatelessWidget {
                                   children: <Widget>[
                                     Column(
                                       children: <Widget>[
-                                        _title(weekdayDateMonth, short),
+                                        title(weekdayDateMonth, short),
                                         ColorStrip(
                                           colorStart: Colors.black,
                                           colorEnd: Colors.black,
                                           thickness: 0.3,
                                           length: 130,
                                         ),
-                                        _content(location, short),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(CupertinoIcons.location),
+                                            _content(location, short),
+                                          ],
+                                        ),
                                       ],
                                     )
                                   ],
@@ -125,7 +135,8 @@ class KokaCardInfo extends StatelessWidget {
                             ),
                             Container(
                               margin: EdgeInsets.only(left: 20),
-                              child: TimeWidget(
+                              child: TimeWithTextWidget(
+                                text: "Til: ",
                                 hours: hoursEnd,
                                 minutes: minutesEnd,
                               ),
@@ -172,17 +183,6 @@ class TimePostedField extends StatelessWidget {
     }
     return SizedBox.shrink();
   }
-}
-
-Text _title(String title, bool short) {
-  if (short) {
-    return Text(title,
-        textAlign: TextAlign.center,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Styles.kokaCardNewsTextHeader);
-  }
-  return Text(title, style: Styles.kokaCardNewsTextHeader);
 }
 
 Text _content(String content, bool short) {
