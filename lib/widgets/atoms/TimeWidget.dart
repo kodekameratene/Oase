@@ -6,10 +6,12 @@ class TimeWidget extends StatelessWidget {
     Key key,
     this.hours,
     this.minutes,
+    this.text,
   }) : super(key: key);
 
   final String hours;
   final String minutes;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,9 @@ class TimeWidget extends StatelessWidget {
           "$minutes",
           style: Styles.textEventCardTimeMinutes,
         ),
+        text != null
+            ? Text("$text", style: Styles.textTimeBoxDay)
+            : SizedBox.shrink(),
       ],
     );
   }

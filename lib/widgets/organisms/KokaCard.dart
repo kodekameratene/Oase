@@ -6,7 +6,6 @@ import 'package:oase/helpers/convertTimeStamp_helper.dart';
 import 'package:oase/helpers/mapCategoryToColor.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/atoms/ColorStrip.dart';
-import 'package:oase/widgets/atoms/TimeWidget.dart';
 
 class KokaCard extends StatelessWidget {
   const KokaCard({
@@ -77,22 +76,16 @@ class KokaCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          if (hours != null && minutes != null)
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
-                              child: TimeWidget(
-                                hours: hours,
-                                minutes: minutes,
-                              ),
-                            ),
                           Flexible(
                             child: Padding(
                               padding: EdgeInsets.all(4),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  _title(title, short),
-                                  _content(content, short),
+                                  hours != null
+                                      ? SizedBox.shrink()
+                                      : _title(title, short),
+                                  _content(content, short)
                                 ],
                               ),
                             ),

@@ -5,6 +5,8 @@ import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/KokaButton.dart';
 import 'package:oase/widgets/molecules/fullScreenImage.dart';
 import 'package:oase/widgets/organisms/KokaCard.dart';
+import 'package:oase/widgets/organisms/KokaCardEvent.dart';
+import 'package:oase/widgets/organisms/TimeBox.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -13,6 +15,7 @@ class ContentViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(document.documentID);
     return Material(
       child: Scaffold(
         appBar: AppBar(
@@ -25,23 +28,57 @@ class ContentViewerPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView(
                 children: <Widget>[
+                  buildKokaCardEvent(),
                   img(context),
-                  KokaCard(
-                    document: document,
-                    padding: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                    ),
-                  ),
-                  if (_exists('url'))
-                    KokaButton(
-                      url: document['url'],
-                    ),
+                  buildKokaCard(),
+                  buildKokaButton(),
+                  buildTimeBox(),
                 ],
               )),
         ),
       ),
     );
+  }
+
+  Widget buildTimeBox() {
+    if (_exists('startTime')) {
+      return TimeBox(
+        document: document,
+      );
+    }
+    return SizedBox.shrink();
+  }
+
+  Widget buildKokaButton() {
+    if (_exists('url')) {
+      return KokaButton(
+        url: document['url'],
+      );
+    }
+    return SizedBox.shrink();
+  }
+
+  Widget buildKokaCard() {
+    if (_exists('content')) {
+      return KokaCard(
+        document: document,
+        padding: EdgeInsets.only(
+          left: 10,
+          right: 10,
+        ),
+      );
+    }
+    return SizedBox.shrink();
+  }
+
+  Widget buildKokaCardEvent() {
+    if (_exists('startTime')) {
+      return KokaCardEvent(
+        document: document,
+        short: false,
+      );
+    }
+    return SizedBox.shrink();
   }
 
   /// Checks if the document have a field

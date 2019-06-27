@@ -13,10 +13,12 @@ class KokaCardEvent extends StatelessWidget {
     Key key,
     this.document,
     this.onTapAction,
+    this.short = true,
   }) : super(key: key);
 
   final DocumentSnapshot document;
   final onTapAction;
+  final bool short;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class KokaCardEvent extends StatelessWidget {
       minutes = formatterMinutes.format(startTime).toString();
     }
     final String title = _exists('title') ? document['title'] : '';
-    final String content = _exists('content') ? document['content'] : '';
+    final String subtitle = _exists('subtitle') ? document['subtitle'] : '';
     final Color colorStart = _exists('category')
         ? mapCategoryToStartColor(document['category'].toString())
         : mapCategoryToStartColor('default');
@@ -65,7 +67,7 @@ class KokaCardEvent extends StatelessWidget {
                 child: InkWell(
                     splashColor: Styles.colorPrimary,
                     child: Container(
-                        height: 60,
+                        height: short ? 60 : null,
                         margin: EdgeInsets.fromLTRB(18, 8, 20, 10),
                         child: Row(
                           children: <Widget>[
@@ -79,15 +81,8 @@ class KokaCardEvent extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(title,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: Styles.textEventCardHeader),
-                                    Text(content,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        softWrap: true,
-                                        style: Styles.textEventCardContent),
+                                    buildTitle(title, short),
+                                    buildSubtitle(subtitle, short),
                                   ],
                                 ),
                               ),
@@ -103,11 +98,45 @@ class KokaCardEvent extends StatelessWidget {
     );
   }
 
+  Widget buildTitle(String title, bool short) {
+    if (title == '') {
+      return SizedBox.shrink();
+    }
+    if (short) {
+      return Text(title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Styles.textEventCardHeader);
+    } else {
+      return Text(title, softWrap: true, style: Styles.textEventCardHeader);
+    }
+  }
+
+  Widget buildSubtitle(String subtitle, bool short) {
+    if (subtitle == null ?? subtitle == '') {
+      return SizedBox.shrink();
+    }
+    if (short) {
+      return Text(formatText(subtitle),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+          softWrap: true,
+          style: Styles.textEventCardContent);
+    } else {
+      return Text(formatText(subtitle),
+          softWrap: true, style: Styles.textEventCardContent);
+    }
+  }
+
   /// Checks if the document have a field
   /// that matches the provided string.
   /// Returns True if the string does exist,
   /// and False if not.
   _exists(String s) {
     return ((document[s] ?? '') != '');
+  }
+
+  String formatText(String content) {
+    return content.replaceAll("\\n", "\n");
   }
 }
