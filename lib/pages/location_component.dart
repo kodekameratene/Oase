@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:oase/assets/mock_data/ContentPost.dart';
 import 'package:oase/styles.dart';
 
 class LocationSelectPage extends StatelessWidget {
-  final List<Location> _locations = locations;
+  final List<Location> locations;
+
+  const LocationSelectPage({Key key, this.locations}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class LocationSelectPage extends StatelessWidget {
             appBar: AppBar(
                 title: Text("Velg sted"), backgroundColor: Styles.colorPrimary),
             body: ListView(
-                children: _locations
+                children: locations
                     .map((post) => ListTile(
                           contentPadding: EdgeInsets.only(
                             left: 20,
@@ -35,4 +36,12 @@ class LocationSelectPage extends StatelessWidget {
                         ))
                     .toList())));
   }
+}
+
+class Location {
+  String get title => null;
+
+  get startTime => null;
+
+  String get img => null;
 }
