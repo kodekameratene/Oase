@@ -13,19 +13,26 @@ class TimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          "$hours",
-          style: Styles.textEventCardTimeHours,
-        ),
-        Text(
-          "$minutes",
-          style: Styles.textEventCardTimeMinutes,
-        ),
-      ],
-    );
+    if (hours != null && minutes != null) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            "$hours",
+            style: Styles.textEventCardTimeHours,
+          ),
+          Text(
+            "$minutes",
+            style: Styles.textEventCardTimeMinutes,
+          ),
+        ],
+      );
+    } else {
+      return SizedBox(
+        width: 20.0,
+        height: 30.0,
+      );
+    }
   }
 }

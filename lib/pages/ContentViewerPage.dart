@@ -4,7 +4,7 @@ import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/KokaButton.dart';
 import 'package:oase/widgets/molecules/fullScreenImage.dart';
-import 'package:oase/widgets/organisms/KokaCard.dart';
+import 'package:oase/widgets/organisms/KokaCardInfo.dart';
 
 class ContentViewerPage extends StatelessWidget {
   ContentViewerPage(this.document);
@@ -26,7 +26,7 @@ class ContentViewerPage extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   img(context),
-                  KokaCard(
+                  KokaCardInfo(
                     document: document,
                     padding: EdgeInsets.only(
                       left: 10,
