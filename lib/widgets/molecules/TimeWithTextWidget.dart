@@ -16,19 +16,29 @@ class TimeWithTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (hours != null && minutes != null) {
       return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          _text(text, true),
-          TimeWidget(hours: hours, minutes: minutes,),
-      ]);
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _text(text, true),
+            TimeWidget(
+              hours: hours,
+              minutes: minutes,
+            ),
+          ]);
+    } else {
+      return SizedBox(
+        width: 20.0,
+        height: 30.0,
+      );
+    }
   }
 }
 
 Text _text(String subtitle, bool short) {
-    return Text(subtitle,
-        textAlign: TextAlign.center,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Styles.kokaCardNewsTextTopRight);
+  return Text(subtitle,
+      textAlign: TextAlign.center,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: Styles.kokaCardNewsTextTopRight);
 }
