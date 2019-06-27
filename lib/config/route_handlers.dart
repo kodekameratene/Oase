@@ -1,7 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:oase/helpers/content_helper.dart';
 import 'package:oase/pages/ContentViewerPage.dart';
 import 'package:oase/pages/HomePage.dart';
 import 'package:oase/pages/InfoPage.dart';
@@ -52,7 +51,7 @@ var contentViewerRouteHandler = new Handler(
   // Todo: || Step 1. Get the content with id from database
   // Todo: || Step 2. Give it to the ContentViewer
   // Todo: || Step 3. => PROFIT!
-  return new ContentViewerPage(ContentHelper.getInfo()[0]);
+  return null;
 });
 
 var settingsRouteHandler = new Handler(

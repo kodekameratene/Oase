@@ -55,27 +55,18 @@ flutter:
     - lib/assets/
 
   fonts:
-    - family: AnticDidone
+    - family: Didot
       fonts:
-        - asset: fonts/Antic_Didone/AnticDidone-Regular.ttf
+        - asset: fonts/Theano-Didot/TheanoDidot-Regular.ttf
     - family: AbrilFatface
       fonts:
         - asset: fonts/Abril_Fatface/AbrilFatface-Regular.ttf
-    - family: Rokkitt
-      fonts:
-        - asset: fonts/Rokkitt/Rokkitt-Regular.ttf
     - family: BungeeShade
       fonts:
         - asset: fonts/Bungee_Shade/BungeeShade-Regular.ttf
     - family: Quattrocento_Sans
       fonts:
         - asset: fonts/Quattrocento_Sans/QuattrocentoSans-Regular.ttf
-    - family: Didot
-      fonts:
-        - asset: fonts/Theano-Didot/TheanoDidot-Regular.ttf
-    - family: Libre_Baskerville
-      fonts:
-        - asset: fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
