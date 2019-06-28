@@ -55,6 +55,7 @@ class _ProgramPageState extends State<ProgramPage> {
           ),
         KokaCardEvent(
             document: document,
+            short: true,
             onTapAction: () => Navigator.push(
                   context,
                   MaterialPageRoute(

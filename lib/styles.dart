@@ -83,4 +83,11 @@ abstract class Styles {
 
   static var kokaCardNewsTextTopRight =
       TextStyle(color: Color.fromRGBO(0, 0, 0, 0.4), fontSize: 12);
+
+  static var textTimeBoxDay = TextStyle(
+    fontSize: 12,
+    fontFamily: "Lao Sangam MN",
+    fontWeight: FontWeight.w100,
+    color: Colors.black38,
+  );
 }
