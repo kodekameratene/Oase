@@ -34,12 +34,16 @@ class TimeBox extends StatelessWidget {
     String endMinutes;
     String endDayName;
     if (_exists('endTime')) {
-      var startTime = convertStamp(document['endTime']);
+      var endTime = convertStamp(document['endTime']);
       var formatterHours = new DateFormat('HH');
       var formatterMinutes = new DateFormat('mm');
-      endHours = formatterHours.format(startTime).toString();
-      endMinutes = formatterMinutes.format(startTime).toString();
-      endDayName = getWeekdayDateMonth(document["endTime"]) ?? null;
+      endHours = formatterHours.format(endTime).toString();
+      endMinutes = formatterMinutes.format(endTime).toString();
+      endDayName = getWeekdayDateMonth(document["endTime"]);
+    }
+    String location;
+    if (_exists('location')) {
+      location = document['location'];
     }
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -63,8 +67,14 @@ class TimeBox extends StatelessWidget {
                 margin: EdgeInsets.all(0),
                 child: Container(
                     margin: EdgeInsets.fromLTRB(18, 8, 20, 10),
-                    child: buildTimeContent(startHours, startMinutes,
-                        startDayName, endHours, endMinutes, endDayName)),
+                    child: buildTimeContent(
+                        startHours,
+                        startMinutes,
+                        startDayName,
+                        endHours,
+                        endMinutes,
+                        endDayName,
+                        location)),
               ),
             ),
           ),
@@ -79,7 +89,8 @@ class TimeBox extends StatelessWidget {
       String startDayName,
       String endHours,
       String endMinutes,
-      String endDayName) {
+      String endDayName,
+      String location) {
     if (endHours == null) {
       return TimeWidget(
         hours: startHours,
@@ -89,37 +100,40 @@ class TimeBox extends StatelessWidget {
     }
     return Column(
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 18, right: 18),
-                  child: TimeWidget(
-                    hours: startHours,
-                    minutes: startMinutes,
-                    text: '$startDayName',
+        Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 18, right: 18),
+                    child: TimeWidget(
+                      hours: startHours,
+                      minutes: startMinutes,
+                      text: '$startDayName',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Icon(Icons.arrow_forward),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 18, right: 18),
-                  child: TimeWidget(
-                    hours: endHours,
-                    minutes: endMinutes,
-                    text: '$endDayName',
+                ],
+              ),
+              Icon(Icons.arrow_forward),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 18, right: 18),
+                    child: TimeWidget(
+                      hours: endHours,
+                      minutes: endMinutes,
+                      text: '$endDayName',
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

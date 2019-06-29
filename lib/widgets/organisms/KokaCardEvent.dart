@@ -89,7 +89,7 @@ class KokaCardEvent extends StatelessWidget {
                             ),
                           ],
                         )),
-                    onTap: () => onTapAction()),
+                    onTap: onTapAction),
               ),
             ),
           ),
