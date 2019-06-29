@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/KokaButton.dart';
-import 'package:oase/widgets/molecules/fullScreenImage.dart';
+import 'package:oase/widgets/molecules/KokaImg.dart';
+import 'package:oase/widgets/molecules/LocationBox.dart';
 import 'package:oase/widgets/organisms/KokaCard.dart';
 import 'package:oase/widgets/organisms/KokaCardEvent.dart';
 import 'package:oase/widgets/organisms/TimeBox.dart';
@@ -29,10 +30,11 @@ class ContentViewerPage extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   buildKokaCardEvent(),
-                  img(context),
+                  buildImg(context),
                   buildKokaCard(),
                   buildKokaButton(),
                   buildTimeBox(),
+                  buildLocationBox()
                 ],
               )),
         ),
@@ -40,46 +42,36 @@ class ContentViewerPage extends StatelessWidget {
     );
   }
 
-  Widget buildTimeBox() {
-    if (_exists('startTime')) {
-      return TimeBox(
-        document: document,
-      );
-    }
-    return SizedBox.shrink();
-  }
+  Widget buildLocationBox() =>
+      _exists('location') ? LocationBox(document: document) : SizedBox.shrink();
 
-  Widget buildKokaButton() {
-    if (_exists('url')) {
-      return KokaButton(
-        url: document['url'],
-      );
-    }
-    return SizedBox.shrink();
-  }
+  Widget buildTimeBox() =>
+      _exists('startTime') ? TimeBox(document: document) : SizedBox.shrink();
 
-  Widget buildKokaCard() {
-    if (_exists('content')) {
-      return KokaCard(
-        document: document,
-        padding: EdgeInsets.only(
-          left: 10,
-          right: 10,
-        ),
-      );
-    }
-    return SizedBox.shrink();
-  }
+  Widget buildKokaButton() =>
+      _exists('url') ? KokaButton(url: document['url']) : SizedBox.shrink();
 
-  Widget buildKokaCardEvent() {
-    if (_exists('startTime')) {
-      return KokaCardEvent(
-        document: document,
-        short: false,
-      );
-    }
-    return SizedBox.shrink();
-  }
+  Widget buildKokaCard() => _exists('content')
+      ? KokaCard(
+          document: document,
+          padding: EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ))
+      : SizedBox.shrink();
+
+  Widget buildKokaCardEvent() => _exists('startTime')
+      ? KokaCardEvent(
+          document: document,
+          short: false,
+        )
+      : SizedBox.shrink();
+
+  Widget buildImg(context) => _exists('img')
+      ? KokaImg(document: document)
+      : Container(
+          height: 10,
+        );
 
   /// Checks if the document have a field
   /// that matches the provided string.
@@ -87,26 +79,5 @@ class ContentViewerPage extends StatelessWidget {
   /// and False if not.
   _exists(String s) {
     return ((document[s] ?? '') != '');
-  }
-
-  Widget img(context) {
-    if (_exists('img')) {
-      return GestureDetector(
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return FullScreenPage(img: document['img']);
-            }));
-          },
-          child: Container(
-            padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-            child: Image.network(
-              document['img'],
-              fit: BoxFit.cover,
-            ),
-          ));
-    }
-    return Container(
-      height: 10,
-    );
   }
 }
