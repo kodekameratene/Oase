@@ -51,7 +51,6 @@ class SettingsPage extends StatelessWidget {
                   buildPushSwitch('VoksenOase'),
                   buildPushSwitch('TenOase'),
                   buildPushSwitch('BoJoKo'),
-                  buildPushSwitch('Developer'),
                   KokaButton(
                     text: 'Personvernregler',
                     url: 'https://koka.no/oase/privacy-policy',
