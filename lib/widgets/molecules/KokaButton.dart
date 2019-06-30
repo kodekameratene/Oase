@@ -43,7 +43,11 @@ Can launch urls or your own provided onTap method.
                 child: Container(
                     padding: EdgeInsets.all(12),
                     child: Text(
-                      text ?? _makeTitleFromUrl(url),
+                      text != null
+                          ? text
+                          : url != null
+                              ? _makeTitleFromUrl(url)
+                              : 'Please give me something to do...',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,

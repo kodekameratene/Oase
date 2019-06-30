@@ -22,14 +22,13 @@ class HomePageState extends State<HomePage> {
           title: AssetHelpers.getAppBarImage(),
           centerTitle: true,
           backgroundColor: Styles.colorPrimary,
-//Todo: Disabled until we have something to show
-//          leading: IconButton(
-//            icon: Icon(Icons.settings),
-//            onPressed: () {
-//              Application.router.navigateTo(context, '/settings',
-//                  transition: TransitionType.fadeIn);
-//            },
-//          ),
+          leading: IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Application.router.navigateTo(context, '/settings',
+                  transition: TransitionType.fadeIn);
+            },
+          ),
         ),
       ),
       backgroundColor: Styles.colorBackgroundColorMain,
