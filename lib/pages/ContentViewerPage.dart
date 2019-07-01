@@ -5,6 +5,7 @@ import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/KokaButton.dart';
 import 'package:oase/widgets/molecules/KokaImg.dart';
 import 'package:oase/widgets/molecules/LocationBox.dart';
+import 'package:oase/widgets/molecules/TrackBox.dart';
 import 'package:oase/widgets/organisms/KokaCard.dart';
 import 'package:oase/widgets/organisms/KokaCardEvent.dart';
 import 'package:oase/widgets/organisms/TimeBox.dart';
@@ -37,49 +38,18 @@ class ContentViewerPage extends StatelessWidget {
                   buildKokaButton(),
                   buildTimeBox(),
                   buildLocationBox(),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Container(
-                      decoration: new BoxDecoration(boxShadow: [
-                        new BoxShadow(
-                          color: Styles.colorShadowCardMain,
-                          blurRadius: 10,
-                          offset: Offset(0, 4),
-                        ),
-                      ]),
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        color: Colors.white,
-                        child: Wrap(
-                          children: <Widget>[
-                            category != null
-                                ? Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Kategori: $category",
-                                      style: Styles.textEventCardTimeMinutes,
-                                    ),
-                                  )
-                                : SizedBox.shrink(),
-                            track != null
-                                ? Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Spor: $track",
-                                      style: Styles.textEventCardTimeMinutes,
-                                    ),
-                                  )
-                                : SizedBox.shrink(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
+                  buildTrackBox(),
                 ],
               )),
         ),
       ),
     );
+  }
+
+  Widget buildTrackBox() {
+    if (_exists('category') || _exists('track'))
+      return TrackBox(document: document);
+    return SizedBox.shrink();
   }
 
   Widget buildLocationBox() =>
