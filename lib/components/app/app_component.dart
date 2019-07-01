@@ -44,7 +44,6 @@ class AppComponentState extends State<AppComponent> {
       setState(() {
         _homeScreenText = "Push Messaging token: $token";
       });
-      _firebaseMessaging.subscribeToTopic('VoksenOase');
       print(_homeScreenText);
     });
   }
@@ -60,7 +59,7 @@ class AppComponentState extends State<AppComponent> {
     final app = new MaterialApp(
       initialRoute: '/',
       title: 'Oase',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       onGenerateRoute: Application.router.generator,
     );
     return app;

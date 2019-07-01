@@ -7,18 +7,15 @@ import 'package:oase/widgets/organisms/KokaCard.dart';
 
 import 'ContentViewerPage.dart';
 
-class InfoPage extends StatelessWidget {
+class SponsorPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    if (document['track'].toString().contains(AppInfo.mainTrack)) {
-      return KokaCard(
-          document: document,
-          short: true,
-          onTapAction: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ContentViewerPage(document))));
-    }
-    return SizedBox.shrink();
+    return KokaCard(
+        document: document,
+        short: true,
+        onTapAction: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ContentViewerPage(document))));
   }
 
   Widget build(context) {
@@ -31,8 +28,7 @@ class InfoPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection(AppInfo.dbCollectionContent)
-                .where("page", arrayContains: 'info')
+                .collection(AppInfo.dbCollectionSponsor)
                 .orderBy("index")
                 .snapshots(),
             builder: (context, snapshot) {

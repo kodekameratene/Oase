@@ -14,11 +14,43 @@ class SharedPreferencesHelper {
   static Future<bool> setPushValue(String key, bool value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final FirebaseMessaging _fcm = FirebaseMessaging();
-    value ? _fcm.subscribeToTopic(key) : _fcm.unsubscribeFromTopic(key);
+    value != null ? _fcm.subscribeToTopic(key) : _fcm.unsubscribeFromTopic(key);
     bool result;
     await prefs.setBool(key, value).then((action) {
       result = action;
     });
+    return result;
+  }
+
+  static Future<bool> setMainTrack(String track) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final FirebaseMessaging _fcm = FirebaseMessaging();
+    track != null ?? _fcm.subscribeToTopic(track);
+    bool result;
+    await prefs.setString("mainTrack", track).then((value) {
+      result = value;
+    });
+    return result;
+  }
+
+  static Future<String> getMainTrack() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String result = prefs.getString("mainTrack");
+    return result;
+  }
+
+  static Future<bool> getShouldShowStartupScreen() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool result = prefs.getBool('firstStart');
+    if (result != null) {
+      return result;
+    }
+    return true;
+  }
+
+  static Future<bool> setShouldShowStartupScreen(bool shouldShow) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    Future<bool> result = prefs.setBool('firstStart', shouldShow);
     return result;
   }
 }

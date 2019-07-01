@@ -65,35 +65,29 @@ class KokaCard extends StatelessWidget {
                   colorStart: colorStart,
                   colorEnd: colorEnd,
                 ),
-                Stack(
-                  children: <Widget>[
-                    Align(
-                        alignment: Alignment(1, -1),
-                        child: TimePostedField(timePosted: timePosted)),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Flexible(
-                            child: Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  hours != null
-                                      ? SizedBox.shrink()
-                                      : _title(title, short),
-                                  _content(content, short)
-                                ],
-                              ),
-                            ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 12, 20, 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Flexible(
+                        child: Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              hours != null
+                                  ? SizedBox.shrink()
+                                  : _title(title, short),
+                              _content(content, short),
+                              TimePostedField(timePosted: timePosted),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -124,9 +118,9 @@ class TimePostedField extends StatelessWidget {
   Widget build(BuildContext context) {
     if (timePosted != null) {
       return Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(top: 8,),
         child: Text(
-          timePosted,
+          "Publisert $timePosted",
           style: Styles.textCardTimePosted,
         ),
       );

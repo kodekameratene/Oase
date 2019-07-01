@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:oase/helpers/appInfo_helper.dart';
 import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/helpers/date_helper.dart';
 import 'package:oase/styles.dart';
@@ -17,7 +18,7 @@ class ProgramPage extends StatefulWidget {
 class _ProgramPageState extends State<ProgramPage> {
   List<DayButton> list = new List<DayButton>();
   List<String> days = new List<String>();
-  List<String> daySeperators = new List<String>();
+  List<String> daySeparators = new List<String>();
 
   Widget build(context) {
     return Material(
@@ -42,17 +43,8 @@ class _ProgramPageState extends State<ProgramPage> {
 
   Widget _buildProgramListItem(
       BuildContext context, DocumentSnapshot document, shouldShowNewDayLabel) {
-    String dayName = getWeekdayDateMonth(document["startTime"]);
     return (Column(
       children: <Widget>[
-        if (shouldShowNewDayLabel)
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Text(
-              dayName,
-              style: Styles.textEventCardHeader,
-            ),
-          ),
         KokaCardEvent(
             document: document,
             short: true,
@@ -68,7 +60,7 @@ class _ProgramPageState extends State<ProgramPage> {
   Widget programList() {
     return (StreamBuilder(
         stream: Firestore.instance
-            .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
+            .collection(AppInfo.dbCollectionContent)
             .where("page", arrayContains: 'program')
             .orderBy("startTime")
             .snapshots(),
@@ -79,7 +71,7 @@ class _ProgramPageState extends State<ProgramPage> {
                     padding: EdgeInsets.all(10),
                     child: Text("Laster inn data...")));
           days = [];
-          daySeperators = new List<String>();
+          daySeparators = new List<String>();
           return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {
@@ -93,8 +85,24 @@ class _ProgramPageState extends State<ProgramPage> {
                     shouldShowNewDayLabel = true;
                   }
                 }
-                return _buildProgramListItem(context,
-                    snapshot.data.documents[index], shouldShowNewDayLabel);
+                bool shouldShowEvent = snapshot.data.documents[index]['track']
+                    .toString()
+                    .contains(AppInfo.mainTrack);
+                return Column(
+                  children: <Widget>[
+                    shouldShowNewDayLabel
+                        ? DayLabel(
+                            document: snapshot.data.documents[index],
+                          )
+                        : SizedBox.shrink(),
+                    shouldShowEvent
+                        ? _buildProgramListItem(
+                            context,
+                            snapshot.data.documents[index],
+                            shouldShowNewDayLabel)
+                        : SizedBox.shrink(),
+                  ],
+                );
               });
         }));
   }
@@ -128,4 +136,20 @@ class _ProgramPageState extends State<ProgramPage> {
 //             });
 //       }));
 // }
+}
+
+class DayLabel extends StatelessWidget {
+  const DayLabel({Key key, this.document}) : super(key: key);
+  final DocumentSnapshot document;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: Text(
+        getWeekdayDateMonth(document["startTime"]),
+        style: Styles.textEventCardHeader,
+      ),
+    );
+  }
 }

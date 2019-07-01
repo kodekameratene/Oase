@@ -10,4 +10,13 @@ class AssetHelpers {
       fit: BoxFit.scaleDown,
     );
   }
+
+  static getMainSponsorImage() {
+    return Image.asset(
+      Styles.mainSponsor,
+      height: 50,
+      fit: BoxFit.fill,
+      colorBlendMode: BlendMode.darken,
+    );
+  }
 }

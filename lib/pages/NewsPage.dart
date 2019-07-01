@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/appInfo_helper.dart';
 import 'package:oase/helpers/asset_helpers.dart';
 import 'package:oase/pages/ContentViewerPage.dart';
 import 'package:oase/styles.dart';
@@ -7,12 +8,17 @@ import 'package:oase/widgets/organisms/KokaCard.dart';
 
 class NewsPage extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return KokaCard(
-      document: document,
-      short: true,
-      onTapAction: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ContentViewerPage(document))),
-    );
+    if (document['track'].toString().contains(AppInfo.mainTrack)) {
+      return KokaCard(
+        document: document,
+        short: true,
+        onTapAction: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ContentViewerPage(document))),
+      );
+    }
+    return SizedBox.shrink();
   }
 
   Widget build(context) {
@@ -25,7 +31,7 @@ class NewsPage extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: Firestore.instance
-                .collection('festival/G0OHb6fOBJEcLv4bUsvX/content')
+                .collection(AppInfo.dbCollectionContent)
                 .where("page", arrayContains: 'news')
                 .where("timestamp", isLessThanOrEqualTo: Timestamp.now())
                 .orderBy("timestamp", descending: true)

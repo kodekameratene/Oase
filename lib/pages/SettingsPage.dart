@@ -1,13 +1,20 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oase/helpers/SharedPreferences.dart';
 import 'package:oase/helpers/appInfo_helper.dart';
 import 'package:oase/styles.dart';
 import 'package:oase/widgets/molecules/KokaButton.dart';
+import 'package:oase/widgets/molecules/PushSwitch.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  bool showSecrets = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -30,34 +37,15 @@ class SettingsPage extends StatelessWidget {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Icon(
-                    Icons.notifications_active,
-                    color: Styles.colorSecondary,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Push-Varsler",
-                      style: Styles.kokaCardNewsTextHeader,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Her kan du skru av og på varsler for de forskjellige sporene.",
-                      style: Styles.kokaCardNewsTextContent,
-                    ),
-                  ),
-                  buildPushSwitch('VoksenOase'),
-                  buildPushSwitch('TenOase'),
-                  buildPushSwitch('BoJoKo'),
+                  buildSwitchButtonSection(),
                   KokaButton(
-                    text: 'Personvernregler',
+                    text: 'Erklæring om personvern',
                     url: 'https://koka.no/oase/privacy-policy',
                   ),
                   KokaButton(
                     text: 'Lisens for kildekode',
-                    url: 'https://github.com/kodekameratene/Oase/blob/develop/LICENSE',
+                    url:
+                        'https://github.com/kodekameratene/Oase/blob/develop/LICENSE',
                   ),
                   VersionInfoLabel(),
                 ],
@@ -69,85 +57,46 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget buildPushSwitch(text) {
+  Column buildSwitchButtonSection() {
     return Column(
       children: <Widget>[
-        new PushSwitch(
-          pushKey: text,
+        GestureDetector(
+          onDoubleTap: () => setState(() {
+                showSecrets ? showSecrets = false : showSecrets = true;
+              }),
+          child: Icon(
+            Icons.notifications_active,
+            color: Styles.colorSecondary,
+          ),
         ),
-        Divider(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Push-Varsler",
+            style: Styles.kokaCardNewsTextHeader,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Her kan du skru av og på varsler for de forskjellige sporene.",
+            style: Styles.kokaCardNewsTextContent,
+          ),
+        ),
+        buildPushSwitch('VoksenOase'),
+        buildPushSwitch('BoJoKo'),
+//        buildPushSwitch('TenOase'),
+        showSecrets ? buildPushSwitch('Developer') : SizedBox.shrink(),
       ],
     );
   }
-}
 
-class PushSwitch extends StatefulWidget {
-  PushSwitch({Key key, this.pushKey}) : super(key: key);
-  final String pushKey;
-
-  @override
-  _PushSwitchState createState() => _PushSwitchState();
-}
-
-class _PushSwitchState extends State<PushSwitch> {
-  FirebaseMessaging _fcm = FirebaseMessaging();
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: SharedPreferencesHelper.getPushValue(widget.pushKey),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-            //This should not happen, since this is a local connection... :P
-            return Text("No connection.");
-            break;
-          case ConnectionState.waiting:
-            //This _does_ happen while we are waiting on the data
-            //Let us return our switches turned off
-            return Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(widget.pushKey),
-                  Switch(
-                    value: false,
-                    onChanged: (bool value) {},
-                    activeColor: Styles.colorSecondary,
-                  ),
-                ],
-              ),
-            );
-            break;
-          case ConnectionState.active:
-            //This one is unlikely, since we only need one object... Read the doc ;)
-            return Text("Active");
-            break;
-          case ConnectionState.done:
-            if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-            return Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(widget.pushKey),
-                  Switch(
-                    value: snapshot.data != null ? snapshot.data : false,
-                    onChanged: (bool value) {
-                      setState(() {
-                        SharedPreferencesHelper.setPushValue(
-                            widget.pushKey, value);
-                      });
-                    },
-                    activeColor: Styles.colorSecondary,
-                  ),
-                ],
-              ),
-            );
-            break;
-        }
-      },
+  Widget buildPushSwitch(text, {bool highlight = false}) {
+    return Column(
+      children: <Widget>[
+        new PushSwitch(pushKey: text, highlight: highlight),
+        Divider(),
+      ],
     );
   }
 }

@@ -16,7 +16,9 @@ class ContentViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(document.documentID);
+    String category =
+        _exists('category') ? document['category'].toString() : null;
+    String track = _exists('track') ? document['track'].toString() : null;
     return Material(
       child: Scaffold(
         appBar: AppBar(
@@ -34,7 +36,45 @@ class ContentViewerPage extends StatelessWidget {
                   buildKokaCard(),
                   buildKokaButton(),
                   buildTimeBox(),
-                  buildLocationBox()
+                  buildLocationBox(),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: new BoxDecoration(boxShadow: [
+                        new BoxShadow(
+                          color: Styles.colorShadowCardMain,
+                          blurRadius: 10,
+                          offset: Offset(0, 4),
+                        ),
+                      ]),
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        color: Colors.white,
+                        child: Wrap(
+                          children: <Widget>[
+                            category != null
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Kategori: $category",
+                                      style: Styles.textEventCardTimeMinutes,
+                                    ),
+                                  )
+                                : SizedBox.shrink(),
+                            track != null
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Spor: $track",
+                                      style: Styles.textEventCardTimeMinutes,
+                                    ),
+                                  )
+                                : SizedBox.shrink(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               )),
         ),
