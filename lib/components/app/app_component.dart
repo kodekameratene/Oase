@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:oase/helpers/appInfo_helper.dart';
 
 import '../../config/application.dart';
 import '../../config/routes.dart';
@@ -58,8 +59,8 @@ class AppComponentState extends State<AppComponent> {
   Widget build(BuildContext context) {
     final app = new MaterialApp(
       initialRoute: '/',
-      title: 'Oase',
-      debugShowCheckedModeBanner: true,
+      title: AppInfo.appName,
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
     );
     return app;
