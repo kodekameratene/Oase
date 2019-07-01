@@ -12,6 +12,7 @@ class Routes {
     router.define("/news", handler: newsRouteHandler);
     router.define("/program", handler: programRouteHandler);
     router.define("/info", handler: infoRouteHandler);
+    router.define("/sponsor", handler: sponsorsRouteHandler);
     router.define("/content/:id", handler: contentViewerRouteHandler);
     router.define("/settings",handler: settingsRouteHandler);
   }

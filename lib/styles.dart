@@ -39,6 +39,7 @@ abstract class Styles {
   // Images
   static const imgLogoMain = "lib/assets/sommeroase.png";
   static const imgLogoOase = "lib/assets/oase_neg.png";
+  static const mainSponsor = "lib/assets/knif.png";
 
 //  TextStyles
   static var textAppBar = TextStyle(fontSize: 30, fontWeight: FontWeight.w200);
@@ -87,7 +88,7 @@ abstract class Styles {
   static var textTimeBoxDay = TextStyle(
     fontSize: 12,
     fontFamily: "Lao Sangam MN",
-    fontWeight: FontWeight.w100,
-    color: Colors.black38,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
   );
 }

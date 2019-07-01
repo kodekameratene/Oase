@@ -1,12 +1,12 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:oase/pages/ContentViewerPage.dart';
 import 'package:oase/pages/HomePage.dart';
 import 'package:oase/pages/InfoPage.dart';
 import 'package:oase/pages/NewsPage.dart';
 import 'package:oase/pages/ProgramPage.dart';
 import 'package:oase/pages/SettingsPage.dart';
+import 'package:oase/pages/SponsorPage.dart';
 import 'package:oase/pages/demo_simple_component.dart';
 
 import '../helpers/color_helpers.dart';
@@ -44,6 +44,11 @@ var programRouteHandler = new Handler(
 var infoRouteHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return new InfoPage();
+});
+
+var sponsorsRouteHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return new SponsorPage();
 });
 
 var contentViewerRouteHandler = new Handler(
