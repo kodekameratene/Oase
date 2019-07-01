@@ -59,7 +59,7 @@ class AppComponentState extends State<AppComponent> {
     final app = new MaterialApp(
       initialRoute: '/',
       title: 'Oase',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
     );
     return app;
