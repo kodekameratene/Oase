@@ -17,15 +17,15 @@ class ContentViewerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String category =
-        _exists('category') ? document['category'].toString() : null;
-    String track = _exists('track') ? document['track'].toString() : null;
     return Material(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Styles.colorPrimary,
-          title: AssetHelpers.getAppBarImage(),
-          centerTitle: true,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: AppBar(
+            backgroundColor: Styles.colorPrimary,
+            title: AssetHelpers.getAppBarImage(),
+            centerTitle: true,
+          ),
         ),
         body: Center(
           child: Padding(
