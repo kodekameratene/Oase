@@ -91,4 +91,10 @@ abstract class Styles {
     fontWeight: FontWeight.w400,
     color: Colors.black,
   );
+
+  static var textDayButtons = TextStyle(
+      fontFamily: "Didot",
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
+      color: Colors.white70);
 }
