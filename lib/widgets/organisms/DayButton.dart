@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:oase/styles.dart';
 
 class DayButton extends StatelessWidget {
   final String day;
@@ -31,9 +32,11 @@ class DayButton extends StatelessWidget {
           ClipOval(
             child: Container(
               padding: EdgeInsets.only(bottom: 2),
-              color: active ? Colors.red : Colors.teal,
-              height: 30.0, // height of the button
-              width: 30.0, // width of the button
+              color: active ? Colors.white : Colors.white70,
+              height: 30.0,
+              // height of the button
+              width: 30.0,
+              // width of the button
               child: Center(child: Text(date)),
             ),
           ),
@@ -44,6 +47,9 @@ class DayButton extends StatelessWidget {
   }
 
   Widget weekDay() {
-    return Text(day);
+    return Text(
+      day,
+      style: Styles.textDayButtons,
+    );
   }
 }
