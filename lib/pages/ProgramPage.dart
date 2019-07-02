@@ -193,16 +193,15 @@ class _ProgramPageState extends State<ProgramPage> {
                   return _buildButtonListItem(
                       context, snapshot.data.documents[index]);
                 }
-//                _controller.animateTo(offset, duration: null, curve: null)
                 return SizedBox.shrink();
               });
         }));
   }
 
   void scrollToNextEvent() {
-    // Scroll to first selected item
+    // Scroll to first item in the future
     _controller.animateTo(getPositionOfActiveEvent(),
-        duration: Duration(milliseconds: 1200), curve: ElasticOutCurve());
+        duration: Duration(seconds: 2), curve: ElasticOutCurve());
   }
 
   double getPositionOfActiveEvent() {
