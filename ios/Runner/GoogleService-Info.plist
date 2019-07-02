@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>256300556269-jngc8qgp7jbasu39pi7bjmpeq7pn74n0.apps.googleusercontent.com</string>
+	<string>256300556269-1segrccfjf5c8grbmrl0a5nfpusaq7u1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.256300556269-jngc8qgp7jbasu39pi7bjmpeq7pn74n0</string>
+	<string>com.googleusercontent.apps.256300556269-1segrccfjf5c8grbmrl0a5nfpusaq7u1</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCpaRIuaZMSXZGNrYiC-uq3me777vjgYlA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>no.oase.festival</string>
+	<string>no.oase.tenoase</string>
 	<key>PROJECT_ID</key>
 	<string>oase-app</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:256300556269:ios:d578e67ed37f804f</string>
+	<string>1:256300556269:ios:2fbcd906edd9bbdd</string>
 	<key>DATABASE_URL</key>
 	<string>https://oase-app.firebaseio.com</string>
 </dict>

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 abstract class Styles {
   // Colors
-  static const colorPrimary = Color.fromRGBO(76, 165, 133, 1.0);
+//  static const colorPrimary = Color.fromRGBO(76, 165, 133, 1.0);
+  static const colorPrimary = Color(0xffdb5042);
   static const colorSecondary = Color.fromRGBO(0, 58, 93, 1);
+
   static const colorWeatherBgStart = Color.fromRGBO(125, 209, 179, 1);
   static const colorWeatherBgEnd = Color.fromRGBO(76, 165, 133, 1);
   static const colorBackgroundColorMain = Color.fromRGBO(235, 235, 235, 1);

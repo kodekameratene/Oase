@@ -83,9 +83,9 @@ class _SettingsPageState extends State<SettingsPage> {
             style: Styles.kokaCardNewsTextContent,
           ),
         ),
-        buildPushSwitch('VoksenOase'),
-        buildPushSwitch('BoJoKo'),
-//        buildPushSwitch('TenOase'),
+//        buildPushSwitch('VoksenOase'),
+//        buildPushSwitch('BoJoKo'),
+        buildPushSwitch('TenOase'),
         showSecrets ? buildPushSwitch('Developer') : SizedBox.shrink(),
       ],
     );

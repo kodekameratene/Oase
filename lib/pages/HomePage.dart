@@ -65,9 +65,10 @@ class HomePageState extends State<HomePage> {
                           style: Styles.kokaCardNewsTextContent,
                         ),
                       ),
-                      PushSwitch(pushKey: 'VoksenOase'),
-                      Divider(height: 0),
-                      PushSwitch(pushKey: 'BoJoKo'),
+                      PushSwitch(pushKey: 'TenOase'),
+//                      PushSwitch(pushKey: 'VoksenOas e'),
+//                      Divider(height: 0),
+//                      PushSwitch(pushKey: 'BoJoKo'),
                       Divider(),
                       Padding(
                         padding: const EdgeInsets.all(10),

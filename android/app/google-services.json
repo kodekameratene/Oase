@@ -41,6 +41,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256300556269:android:2fbcd906edd9bbdd",
+        "android_client_info": {
+          "package_name": "no.oase.tenoase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256300556269-2ccc26btvn3hds34jbtmnddup7iphnus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxBKrYJ64LEJmWbM_UIrGErlu2jOuc-eQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256300556269-2ccc26btvn3hds34jbtmnddup7iphnus.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "256300556269-jngc8qgp7jbasu39pi7bjmpeq7pn74n0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "no.oase.festival"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

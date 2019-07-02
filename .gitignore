@@ -427,3 +427,6 @@ ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 .idea
 
 ios/Runner\.xcodeproj/project\.pbxproj
+
+# Secret signing key
+android/key.properties
