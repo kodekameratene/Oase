@@ -2,7 +2,7 @@ abstract class AppInfo {
   //Todo: Do it programmatically
   // Check out ==> https://pub.dev/packages/package_info
   static String appName = "TenOase";
-  static String version = "1.1.0";
+  static String version = "1.1.1";
   static String developers = "kodekameratene";
 
 //  static Pattern mainTrack = "VoksenOase";
