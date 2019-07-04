@@ -178,7 +178,7 @@ class HomePageState extends State<HomePage> {
             Divider(),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Sponsorer"),
+              child: Text("Sponsor og Standholdere"),
             ),
           ],
         ),
@@ -199,7 +199,7 @@ class HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          "Lær mer om våre sponsorer.",
+                          "Les mer fra vår hovedsponsor Knif Trygghet og standholdere",
                         ),
                       )
                     ],
