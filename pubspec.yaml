@@ -23,7 +23,7 @@ dependencies:
   package_info: ^0.4.0+3
   intl: ^0.15.8
   url_launcher:
-  http: ^0.12.0+2
+  http: ^0.13.0
   photo_view: ^0.3.0 # Newest version is 0.4.0, but it is not complicable with the SDK version.
   firebase_core: ^0.4.0+6
 #  firebase_auth: ^0.11.1+6
