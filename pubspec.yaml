@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluro: ^1.4.0
-  package_info: ^0.4.0+3
+  package_info: ^2.0.0
   intl: ^0.15.8
   url_launcher:
   http: ^0.12.0+2
